@@ -1,29 +1,69 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#File        pyrscwlib.py
+#Author      Jonathan Rawlinson/M0ZJO
+#Date        05/01/2019
+#Desc.       This is the main software library for the CW decoding software "Pyrscw".
+#            The original inspiration for this software was rscw.c (http://wwwhome.cs.utwente.nl/~ptdeboer/ham/rscw/) 
+#            written by PA3FWM but the implemntation differs in a number of ways. This software was written to 
+#            process audio recordings of the XW2 satellites but will work with any machine generated CW.
+
+
+__author__ = "Jonathan/M0ZJO"
+__copyright__ = "Jonathan/M0ZJO 2019"
+__credits__ = ["PA3FWM for RSCW"]
+__license__ = "MIT"
+__version__ = "0.0.1"
+__date__ = "05/01/2019"
+__maintainer__ = "Jonathan/M0ZJO"
+__status__ = "Development"
+
 import numpy as np
 from scipy import signal, stats
 import matplotlib.pyplot as plt
 import wavio
 
+
+# Print info about the software
+def print_header():
+    name = """
+.______   ____    ____ .______          _______.  ______ ____    __    ____ 
+|   _  \  \   \  /   / |   _  \        /       | /      |\   \  /  \  /   / 
+|  |_)  |  \   \/   /  |  |_)  |      |   (----`|  ,----' \   \/    \/   /  
+|   ___/    \_    _/   |      /        \   \    |  |       \            /   
+|  |          |  |     |  |\  \----.----)   |   |  `----.   \    /\    /    
+| _|          |__|     | _| `._____|_______/     \______|    \__/  \__/     
+"""
+    print(name)
+    
+    print("### PyRSCW version %s release date %s ###" % (__version__, __date__))
+    print("### Written by %s. Happy Beeping! ###" % __author__)
+
+# Use wavio to load the wav file from GQRX
 def open_wav_file(filename):
     wav_data = wavio.read(filename)
     print("Wavfile loaded. Len:%i, Fs:%iHz" % (wav_data.data.shape[0], wav_data.rate))
     wav_data.data = wav_data.data[:,0]
     return wav_data
 
+# Plot section of file (for debugging purposes)
 def plot_file(wav_data):
     plt.plot(wav_data.data[0:1000])
     plt.show()
     return
-    
+
+# Simple DC removal algorithem
 def remove_dc(wav_data):
     wav_data.data = wav_data.data - np.mean(wav_data.data)
     return wav_data
 
+# Generate PSD of file to work out the CF of the CW signal
 def find_carrier(wav_data):
     f, Pxx_den = signal.welch(wav_data.data, wav_data.rate, nperseg=2048)
     
     max_value = np.argmax(Pxx_den)
     
-    print("Carrier found at %0.2fHz" % f[max_value])
+    print("Carrier found at %0.4fHz" % f[max_value])
     
     carrier_freq = f[max_value]
     
@@ -36,6 +76,7 @@ def find_carrier(wav_data):
     
     return carrier_freq
 
+# From the CF of the CW signal - generate I and Q carriers to downsample the signal to baseband
 def generate_carriers(wav_data, carrier_freq):
     rate = wav_data.rate  # samples per second
     sample_length = len(wav_data.data)         # sample duration (seconds)
@@ -46,11 +87,13 @@ def generate_carriers(wav_data, carrier_freq):
     print("Carriers Generated")
     return sin_car, cos_car
 
+# Design LPF to remove signal away from baseband
+# TODO pull out filter design parms
 def design_lpf(fs, mode, plot = False):
     
     nyq_rate = fs/2
     
-    
+    # It is also possible to load in designs from other sources - not supported yet
     if mode == 0:
         with open("150hzlpf", "r") as f:
             taps = []
@@ -93,6 +136,7 @@ def design_lpf(fs, mode, plot = False):
         
     return taps
 
+# Downsample signal and apply LPF
 def generate_filtered_baseband(wav_data, carriers):
     
     taps = design_lpf(wav_data.rate, 1)
@@ -106,6 +150,8 @@ def generate_filtered_baseband(wav_data, carriers):
     
     return filtered_i, filtered_q
 
+# Downsample audio file to 1000 Hz
+# TODO pipe thorugh fs so different fs can be supported
 def downsample_abs_bb(baseband_data, fs):
     i_chan = baseband_data[0]
     q_chan = baseband_data[1]
@@ -125,57 +171,58 @@ def downsample_abs_bb(baseband_data, fs):
     
     return i_chan_ds, q_chan_ds
     
+# Compute magnitude of signal
 def compute_abs(downsampled_power_data):
-    
     sqr_dat = np.square(downsampled_power_data[0]) + np.square(downsampled_power_data[1])
-    
     return np.sqrt(sqr_dat)
 
+# Use a window to smooth the vector
+# TODO Very inefficient...
 def smooth_mag(mag, window_len = 10, No_iter = 20):
     for i in range(0, No_iter):
         mag = np.convolve(mag, np.ones((window_len,))/window_len, mode='valid')
     return mag
 
+# Determine the value of the power threshold
 def get_threshold_val(mag, location, thresh = 0.5, search_len = 1000):
-    
+    #Define search area
     min_search = location-search_len/2
-    
     if min_search < 0:
         min_search = 0
         
     max_search = location+search_len/2
-    
     if max_search > len(mag) - 1:
         max_search = len(mag) - 1
-
-    search_vector = mag[int(min_search):int(max_search)]
     
-    min_val = np.min(search_vector)
-    max_val = np.max(search_vector)
+    # "Cut out" vector to be searched and return max and min
+    #search_vector = mag[int(min_search):int(max_search)]
+    min_val = np.min(mag[int(min_search):int(max_search)])
+    max_val = np.max(mag[int(min_search):int(max_search)])
     
     delta = max_val - min_val
     
+    # Convert rel value to abs value
     threshold_val = min_val + delta*thresh
     
     return threshold_val
 
+# Iterate through vector and compute threshold
+# TODO can be made a lot more efficient by only sampling every N samples (as the value will move rather slowly... I think... )
 def get_threshold(mag):
-    
     thresh_vector = np.zeros(mag.shape)
     for i in range(0, len(mag)):
         thresh_vector[i] = get_threshold_val(mag, i)
     
     return thresh_vector
 
+# Determine the coefficient for signal detection
 def signal_detect_val(mag, location, thresh = 0.5, search_len = 1000):
     
     min_search = location-search_len/2
-    
     if min_search < 0:
         min_search = 0
         
     max_search = location+search_len/2
-    
     if max_search > len(mag) - 1:
         max_search = len(mag) - 1
 
@@ -183,6 +230,8 @@ def signal_detect_val(mag, location, thresh = 0.5, search_len = 1000):
     
     return np.std(search_vector)
     
+# Iterate through vector and compute threshold
+# TODO work out method of computing the detection_threshold (fixed atm). Probably something to do with the fs and noise of sound card (so can probably be assumed)
 def signal_detect(mag, detection_threshold = 50000):
     
     signal_detect_vector = np.zeros(mag.shape)
@@ -193,9 +242,12 @@ def signal_detect(mag, detection_threshold = 50000):
     
     return signal_detect_vector
 
+# Apply the power threshold
 def apply_threshold(mag, thresh_vector):
     return mag - thresh_vector
 
+# Convert +N -N to +1 -1
+# TODO more efficient?
 def quantise(mag):
     
     bitstream_ind_pos = mag>0
@@ -206,10 +258,11 @@ def quantise(mag):
     
     return mag
 
+# Finds the start of each bitstream when a signal is present
 def bit_synch(bitstream, signal_present, min_length = 1000):
-    # Finds the start of each bitstream when a signal is present
     signal_len = len(bitstream)
     
+    # Simple FSM to determine the bit start.
     SIGNAL_STATUS = False
     SYNCH = False
     
@@ -217,36 +270,29 @@ def bit_synch(bitstream, signal_present, min_length = 1000):
     
     for i in range(1, signal_len):
         if (signal_present[i] == 1) and (signal_present[i-1] == 0):
-            #Start of signal
+            #Start of signal (signal detector)
             SIGNAL_STATUS = True
         if (bitstream[i] == 1) and (bitstream[i-1] == -1) and (SIGNAL_STATUS == True) and (SYNCH == False):
-            #Start of signal
-            #print("Found Signal at %i" % i)
+            #Start of signal (Start of bit)
             start_pos = i
             SYNCH = True
         if (signal_present[i] == 0) and (signal_present[i-1] == 1) and (SYNCH == True):
-            #End of signal
-            #print("Signal End at %i" % i)
+            #End of signal (bit)
             end_pos = i
-            
-            #print(end_pos - start_pos)    
             if (end_pos - start_pos) > min_length:
                 signal_list.append([start_pos, end_pos])
             SIGNAL_STATUS = False
             SYNCH = False
-        
+    # The signal ended whilst we were synched! Make sure not to lose any data.
     if SYNCH == True:
         end_pos = signal_len - 1
         #print(end_pos - start_pos)
         if (end_pos - start_pos) > min_length:
             signal_list.append([start_pos, end_pos])
         
-    
     return signal_list
              
-# Decoder...
-
-                
+# Generate alphabet (as defined by PA3FWM)
 def generate_alphabet():
     
     alphabet = {}
@@ -286,31 +332,19 @@ def generate_alphabet():
     alphabet["7"] = "1110111010101000"
     alphabet["8"] = "111011101110101000"
     alphabet["9"] = "11101110111011101000"
-    alphabet[" "] = "0000"
     
     return alphabet
         
-def wpm_to_baud_rate(wpm):
-    # From -->> https://en.wikipedia.org/wiki/Words_per_minute
-    return float((50/60) * wpm)
+#def wpm_to_baud_rate(wpm):
+    ## From -->> https://en.wikipedia.org/wiki/Words_per_minute
+    #return float((50/60) * wpm)
 
-#def upsample_alphabet(alphabet, baud_rate, fs):
-    #sample_len = 1/fs
-    #alpha_len = 1/baud_rate
-    #upsample_ratio = alpha_len/sample_len
-    #alphabet_us = {}
-    #for key, value in alphabet.items():
-        #val_us = ""
-        #for i in value:
-            #for j in range(0, int(upsample_ratio)):
-                #val_us = val_us + i
-        #alphabet_us[key] = val_us
-    #return alphabet_us, upsample_ratio
-
+# Convert WPM to something useful!
 def wpm_to_symbol_len(wpm):
     # from https://www.eham.net/ehamforum/smf/index.php?topic=8534.0;wap2
     return 1200/wpm
 
+# Convert a string of 1s and 0s to numpy array
 def bin_string_to_numpy_array(bin_string):
     tmp = np.zeros(len(bin_string))
     for i in range(0, len(bin_string)):
@@ -318,153 +352,86 @@ def bin_string_to_numpy_array(bin_string):
     tmp[tmp == 0] = -1
     return tmp
 
+# Main correlator function. Returns correlation value of two sequences.
 def correlate_value(in1, in2):
     if len(in1) != len(in2):
         return 0
-    #print(len(in1), len(in2))
     out = np.zeros(len(in1))
     for i in range(0, len(in1)):
         out[i] = in1[i] * in2[i]
     
     return np.sum(out)/len(out)
-
-#def correlate_alphabet(bitstream, alphabet):
-    #labels = []
-    #values = []
-    #for key, value in alphabet.items():
-        #labels.append(key)
-        #values.append(value)
-    
-    #correlator_outputs = np.zeros(len(labels))
-    #for i in range(0, len(values)):
-        #tmp_template = bin_string_to_numpy_array(values[i])
-        #if len(bitstream) >= len(tmp_template):
-            #tmp_data = bitstream[0:len(tmp_template)]
-            
-            #val = correlate_value(tmp_template, tmp_data)/len(tmp_template)
-            #correlator_outputs[i] = val
-        #else:
-            #correlator_outputs[i] = 0
-    
-    #max_val = np.argmax(correlator_outputs)
-    #return labels[max_val], len(values[max_val])
-        
-    
-
-#def decode_block(bitstream, sync, alphabet_data):
-    #alphabet = alphabet_data[0]
-    #upsample_ratio = alphabet_data[1]
-    #bitstream_temp = bitstream[sync[0]:sync[1]]
-    #offset = 0
-    #while True:
-        #correlator_out = correlate_alphabet(bitstream_temp[offset:len(bitstream_temp)], alphabet)
-        #offset = offset + correlator_out[1]
-        
-        #print("Val:%s, Offset:%i" % (correlator_out[0], offset))
-        #if len(bitstream_temp)-offset < 0:
-            #break
-        
-        #while True:
-            #if bitstream_temp[offset] == 1:
-                #break
-            #else:
-                #offset = offset + 1
-                
-#def decode_block(bitstream, sync, alphabet_data, debug = False):
-    
-    ### Try again - search for gaps? Yeah - use np.correlate
-    #bitstream_temp = bitstream[sync[0]:sync[1]]
-    
-    #wpm = 22
-    #ts = wpm_to_symbol_len(wpm)
-    #fs = 1000
-    #symbol_len = (fs * ts)/1000
-    #alphabet = alphabet_data[0]
-    
-    #char_gap_array = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len*3)))
-    
-    #np.save("bitstream.npy", bitstream_temp)
-    
-    #plt.plot(bitstream_temp)
-    #plt.show()
-
-        
-        
-        
+ 
+# Decode bitstream block
+# TODO pass through variables
 def decode_block(bitstream, alphabet, wpm):
     #bitstream = np.load("bitstream.npy")
     
-    #wpm = 22
-    #ts = wpm_to_symbol_len(wpm)
     ts = int(1200/wpm) # In ms
     fs = 1000
     symbol_len = (fs * ts)/1000
     
     offset = 0
+    tmp_str = ""
     while True:
         correlator_output = correlate_alphabet(bitstream[0 + offset:22*ts + offset], alphabet, ts)
         if correlator_output == None:
             print("\n### Decode Complete ###")
-            return
-        print(correlator_output[0], end='', flush=True)
+            return tmp_str
+        #print(correlator_output[0], end='', flush=True)
+        tmp_str = tmp_str + correlator_output[0]
         offset = offset + correlator_output[1]
-    
-        
-    return
-        
+
+# Use correlator to search through all letters and numbers of alphabet dictionary. 
+# Returns the following:
+# - Letter (with or without space as appropriate)
+# - Next sync value (to remove "bit jitter")
 def correlate_alphabet(bits, alphabet, ts):
     alphabet_keys = list(alphabet.keys())
     alphabet_values = list(alphabet.values())
     
+    #List for upsampled alphabet values
     alphabet_values_us = []
-    
+    # Upsample according to symbol len (will only fork for 1000Hz fs
     for i in range(0, len(alphabet_keys)):
         tmp_str = ""
         for j in range(0, len(alphabet_values[i])):
             tmp_str = tmp_str + repeat_to_length(alphabet_values[i][j], int(ts))
         alphabet_values_us.append(bin_string_to_numpy_array(tmp_str))
     
-    
+    # Somewhere to store the correlation output
     ans = np.zeros(len(alphabet_values_us))
     for i in range(0, len(alphabet_values_us)):
         ans[i] = correlate_value(alphabet_values_us[i], bits[0:len(alphabet_values_us[i])])
     
+    # Find the index of the maxval
     correlator_result = np.argmax(ans)
     
-    #plt.plot(bits)
-    #plt.plot(alphabet_values_us[18])
-    #plt.show()
-    
+    # Sync up to the next bit and detect space
+    j = 0
     for offset_delta in range(len(alphabet_values_us[correlator_result]) - 22, len(bits)):
         if bits[offset_delta] == 1:
-            return alphabet_keys[correlator_result], offset_delta
+            if j < ts*3:
+                return alphabet_keys[correlator_result], offset_delta
+            else:
+                return alphabet_keys[correlator_result] + " ", offset_delta
+        j = j + 1
     
-    
-    
-        
-
-#def correlate_debits(bitstream, symbol_len):
-    #bits = [None, None, None, None]
-    #bits[0] = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len)*2))
-    #bits[1] = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len)) + repeat_to_length("1", int(symbol_len)))
-    #bits[2] = bin_string_to_numpy_array(repeat_to_length("1", int(symbol_len)) + repeat_to_length("0", int(symbol_len)))
-    #bits[3] = bin_string_to_numpy_array(repeat_to_length("1", int(symbol_len)*2))   
-    
-    #labels = ["00", "01", "10", "11"]
-    
-    #ans = np.zeros(len(bits))
-    #for i in range(0, len(bits)):
-        #ans[i] = correlate_value(bitstream, bits[i])
-    
-    #return labels[np.argmax(ans)]
 
 # From -->> https://stackoverflow.com/questions/3391076/repeat-string-to-certain-length
 def repeat_to_length(string_to_expand, length):
     return string_to_expand*length
 
+# Plot a series of numpy arrays (debugging...)
 def plot_mag_data(mag):
     
     for i in mag:
         plt.plot(i)
     plt.show()
     return
+
+# What if someone tries to run the library file!
+if __name__ == "__main__":
+    # execute only if run as a script
+    print_header()
+    print("This is the library file - please run the main script 'pyrscw.py'")
