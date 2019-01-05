@@ -16,6 +16,7 @@ from pyrscwlib import log
 # TODO this will be integrated into command args soon
 wpm = 22
 min_signal_len = 2000 #In ms
+threshold_value = 0.5 #Normalised to varience of signal
 
 pyrscwlib.print_header()
 
@@ -50,13 +51,15 @@ downsampled_power_data = pyrscwlib.downsample_abs_bb(baseband_data, wav_file.rat
 log("### Calculate Mag ###")
 magnitude_data = pyrscwlib.compute_abs(downsampled_power_data)
 
+pyrscwlib.plot_numpy_data([magnitude_data])
+
 # Smooth the magnitude vector (convolutional method)
 log("### Smooth ###")
 magnitude_data_smoothed = pyrscwlib.smooth_mag(magnitude_data)
 
 # Generate threshold vector to determine the level at which a signal is present
 log("### Generate Threshold Vector ###")
-thresh_vector = pyrscwlib.get_threshold(magnitude_data_smoothed)
+thresh_vector = pyrscwlib.get_threshold(magnitude_data_smoothed, thresh = threshold_value)
 
 # Use the threshold vector to return a zero mean signal
 log("### Apply Threshold ###")
@@ -64,11 +67,13 @@ shifted_mag = pyrscwlib.apply_threshold(magnitude_data_smoothed, thresh_vector)
 
 # Detect if a CW signal is present (or any signal for that matter) by looking at the standard deviation
 log("### Detect Signal ###")
-signal_present = pyrscwlib.signal_detect(magnitude_data)
+signal_present = pyrscwlib.signal_detect(magnitude_data, detection_threshold = 0.1)
 
 # Convert +n and -n to 1 and -1
 log("### Quantise ###")
 bitstream = pyrscwlib.quantise(shifted_mag)
+
+
 
 # From the signal detection vector - determine where the bt starts (to the nearest sample)
 log("### Bit Synch ###")

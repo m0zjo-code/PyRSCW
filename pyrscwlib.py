@@ -23,7 +23,10 @@ from scipy import signal, stats
 import matplotlib.pyplot as plt
 import wavio
 import datetime
+import logging
 
+
+logging.basicConfig(filename='PyRSCW.log', level=logging.INFO)
 
 # Print info about the software
 def print_header():
@@ -158,7 +161,7 @@ def downsample_abs_bb(baseband_data, fs):
     i_chan = baseband_data[0]
     q_chan = baseband_data[1]
     
-    N = 48 # 48000/48 = 1000
+    N = int(fs/1000) # 48000/48 = 1000
     bb_len = len(i_chan)
     
     truncate_len = np.mod(bb_len, N)
@@ -173,10 +176,13 @@ def downsample_abs_bb(baseband_data, fs):
     
     return i_chan_ds, q_chan_ds
     
-# Compute magnitude of signal
+# Compute magnitude of signal and normalise
 def compute_abs(downsampled_power_data):
     sqr_dat = np.square(downsampled_power_data[0]) + np.square(downsampled_power_data[1])
-    return np.sqrt(sqr_dat)
+    sqr_dat = np.sqrt(sqr_dat)
+    ## https://stackoverflow.com/questions/1735025/how-to-normalize-a-numpy-array-to-within-a-certain-range
+    #sqr_dat = sqr_dat / np.max(np.abs(sqr_dat))
+    return sqr_dat/max(sqr_dat)
 
 # Use a window to smooth the vector
 # TODO Very inefficient...
@@ -210,7 +216,7 @@ def get_threshold_val(mag, location, thresh = 0.5, search_len = 1000):
 
 # Iterate through vector and compute threshold
 # TODO can be made a lot more efficient by only sampling every N samples (as the value will move rather slowly... I think... )
-def get_threshold(mag):
+def get_threshold(mag, thresh = 0.5):
     thresh_vector = np.zeros(mag.shape)
     for i in range(0, len(mag)):
         thresh_vector[i] = get_threshold_val(mag, i)
@@ -234,7 +240,7 @@ def signal_detect_val(mag, location, thresh = 0.5, search_len = 1000):
     
 # Iterate through vector and compute threshold
 # TODO work out method of computing the detection_threshold (fixed atm). Probably something to do with the fs and noise of sound card (so can probably be assumed)
-def signal_detect(mag, detection_threshold = 50000):
+def signal_detect(mag, detection_threshold = 0.1):
     
     signal_detect_vector = np.zeros(mag.shape)
     for i in range(0, len(mag)):
@@ -425,7 +431,7 @@ def repeat_to_length(string_to_expand, length):
     return string_to_expand*length
 
 # Plot a series of numpy arrays (debugging...)
-def plot_mag_data(mag):
+def plot_numpy_data(mag):
     
     for i in mag:
         plt.plot(i)
@@ -434,6 +440,10 @@ def plot_mag_data(mag):
 
 def log(string):
     print(datetime.datetime.now(), string)
+    log_str = str(datetime.datetime.now()) + "\t" + string
+    logging.info(log_str)
+    
+    
 
 # What if someone tries to run the library file!
 if __name__ == "__main__":
