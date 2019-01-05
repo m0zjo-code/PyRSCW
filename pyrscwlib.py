@@ -228,21 +228,239 @@ def bit_synch(bitstream, signal_present, min_length = 1000):
             #End of signal
             #print("Signal End at %i" % i)
             end_pos = i
-            signal_list.append([start_pos, end_pos])
+            
+            #print(end_pos - start_pos)    
+            if (end_pos - start_pos) > min_length:
+                signal_list.append([start_pos, end_pos])
             SIGNAL_STATUS = False
             SYNCH = False
         
     if SYNCH == True:
         end_pos = signal_len - 1
-        signal_list.append([start_pos, end_pos])
+        #print(end_pos - start_pos)
+        if (end_pos - start_pos) > min_length:
+            signal_list.append([start_pos, end_pos])
+        
     
     return signal_list
-                    
+             
+# Decoder...
+
                 
 def generate_alphabet():
+    
+    alphabet = {}
+    alphabet["a"] = "10111000"
+    alphabet["b"] = "111010101000"
+    alphabet["c"] = "11101011101000"
+    alphabet["d"] = "1110101000"
+    alphabet["e"] = "1000"
+    alphabet["f"] = "101011101000"
+    alphabet["g"] = "111011101000"
+    alphabet["h"] = "1010101000"
+    alphabet["i"] = "101000"
+    alphabet["j"] = "1011101110111000"
+    alphabet["k"] = "111010111000"
+    alphabet["l"] = "101110101000"
+    alphabet["m"] = "1110111000"
+    alphabet["n"] = "11101000"
+    alphabet["o"] = "11101110111000"
+    alphabet["p"] = "10111011101000"
+    alphabet["q"] = "1110111010111000"
+    alphabet["r"] = "1011101000"
+    alphabet["s"] = "10101000"
+    alphabet["t"] = "111000"
+    alphabet["u"] = "1010111000"
+    alphabet["v"] = "101010111000"
+    alphabet["w"] = "101110111000"
+    alphabet["x"] = "11101010111000"
+    alphabet["y"] = "1110101110111000"
+    alphabet["z"] = "11101110101000"
+    alphabet["0"] = "1110111011101110111000"
+    alphabet["1"] = "10111011101110111000"
+    alphabet["2"] = "101011101110111000"
+    alphabet["3"] = "1010101110111000"
+    alphabet["4"] = "10101010111000"
+    alphabet["5"] = "101010101000"
+    alphabet["6"] = "11101010101000"
+    alphabet["7"] = "1110111010101000"
+    alphabet["8"] = "111011101110101000"
+    alphabet["9"] = "11101110111011101000"
+    alphabet[" "] = "0000"
+    
+    return alphabet
+        
+def wpm_to_baud_rate(wpm):
+    # From -->> https://en.wikipedia.org/wiki/Words_per_minute
+    return float((50/60) * wpm)
+
+#def upsample_alphabet(alphabet, baud_rate, fs):
+    #sample_len = 1/fs
+    #alpha_len = 1/baud_rate
+    #upsample_ratio = alpha_len/sample_len
+    #alphabet_us = {}
+    #for key, value in alphabet.items():
+        #val_us = ""
+        #for i in value:
+            #for j in range(0, int(upsample_ratio)):
+                #val_us = val_us + i
+        #alphabet_us[key] = val_us
+    #return alphabet_us, upsample_ratio
+
+def wpm_to_symbol_len(wpm):
+    # from https://www.eham.net/ehamforum/smf/index.php?topic=8534.0;wap2
+    return 1200/wpm
+
+def bin_string_to_numpy_array(bin_string):
+    tmp = np.zeros(len(bin_string))
+    for i in range(0, len(bin_string)):
+        tmp[i] = int(bin_string[i])
+    tmp[tmp == 0] = -1
+    return tmp
+
+def correlate_value(in1, in2):
+    if len(in1) != len(in2):
+        return 0
+    #print(len(in1), len(in2))
+    out = np.zeros(len(in1))
+    for i in range(0, len(in1)):
+        out[i] = in1[i] * in2[i]
+    
+    return np.sum(out)/len(out)
+
+#def correlate_alphabet(bitstream, alphabet):
+    #labels = []
+    #values = []
+    #for key, value in alphabet.items():
+        #labels.append(key)
+        #values.append(value)
+    
+    #correlator_outputs = np.zeros(len(labels))
+    #for i in range(0, len(values)):
+        #tmp_template = bin_string_to_numpy_array(values[i])
+        #if len(bitstream) >= len(tmp_template):
+            #tmp_data = bitstream[0:len(tmp_template)]
+            
+            #val = correlate_value(tmp_template, tmp_data)/len(tmp_template)
+            #correlator_outputs[i] = val
+        #else:
+            #correlator_outputs[i] = 0
+    
+    #max_val = np.argmax(correlator_outputs)
+    #return labels[max_val], len(values[max_val])
+        
+    
+
+#def decode_block(bitstream, sync, alphabet_data):
+    #alphabet = alphabet_data[0]
+    #upsample_ratio = alphabet_data[1]
+    #bitstream_temp = bitstream[sync[0]:sync[1]]
+    #offset = 0
+    #while True:
+        #correlator_out = correlate_alphabet(bitstream_temp[offset:len(bitstream_temp)], alphabet)
+        #offset = offset + correlator_out[1]
+        
+        #print("Val:%s, Offset:%i" % (correlator_out[0], offset))
+        #if len(bitstream_temp)-offset < 0:
+            #break
+        
+        #while True:
+            #if bitstream_temp[offset] == 1:
+                #break
+            #else:
+                #offset = offset + 1
+                
+#def decode_block(bitstream, sync, alphabet_data, debug = False):
+    
+    ### Try again - search for gaps? Yeah - use np.correlate
+    #bitstream_temp = bitstream[sync[0]:sync[1]]
+    
+    #wpm = 22
+    #ts = wpm_to_symbol_len(wpm)
+    #fs = 1000
+    #symbol_len = (fs * ts)/1000
+    #alphabet = alphabet_data[0]
+    
+    #char_gap_array = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len*3)))
+    
+    #np.save("bitstream.npy", bitstream_temp)
+    
+    #plt.plot(bitstream_temp)
+    #plt.show()
+
+        
+        
+        
+def decode_block(bitstream, alphabet, wpm):
+    #bitstream = np.load("bitstream.npy")
+    
+    #wpm = 22
+    #ts = wpm_to_symbol_len(wpm)
+    ts = int(1200/wpm) # In ms
+    fs = 1000
+    symbol_len = (fs * ts)/1000
+    
+    offset = 0
+    while True:
+        correlator_output = correlate_alphabet(bitstream[0 + offset:22*ts + offset], alphabet, ts)
+        if correlator_output == None:
+            print("\n### Decode Complete ###")
+            return
+        print(correlator_output[0], end='', flush=True)
+        offset = offset + correlator_output[1]
+    
+        
     return
         
+def correlate_alphabet(bits, alphabet, ts):
+    alphabet_keys = list(alphabet.keys())
+    alphabet_values = list(alphabet.values())
+    
+    alphabet_values_us = []
+    
+    for i in range(0, len(alphabet_keys)):
+        tmp_str = ""
+        for j in range(0, len(alphabet_values[i])):
+            tmp_str = tmp_str + repeat_to_length(alphabet_values[i][j], int(ts))
+        alphabet_values_us.append(bin_string_to_numpy_array(tmp_str))
+    
+    
+    ans = np.zeros(len(alphabet_values_us))
+    for i in range(0, len(alphabet_values_us)):
+        ans[i] = correlate_value(alphabet_values_us[i], bits[0:len(alphabet_values_us[i])])
+    
+    correlator_result = np.argmax(ans)
+    
+    #plt.plot(bits)
+    #plt.plot(alphabet_values_us[18])
+    #plt.show()
+    
+    for offset_delta in range(len(alphabet_values_us[correlator_result]) - 22, len(bits)):
+        if bits[offset_delta] == 1:
+            return alphabet_keys[correlator_result], offset_delta
+    
+    
+    
         
+
+#def correlate_debits(bitstream, symbol_len):
+    #bits = [None, None, None, None]
+    #bits[0] = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len)*2))
+    #bits[1] = bin_string_to_numpy_array(repeat_to_length("0", int(symbol_len)) + repeat_to_length("1", int(symbol_len)))
+    #bits[2] = bin_string_to_numpy_array(repeat_to_length("1", int(symbol_len)) + repeat_to_length("0", int(symbol_len)))
+    #bits[3] = bin_string_to_numpy_array(repeat_to_length("1", int(symbol_len)*2))   
+    
+    #labels = ["00", "01", "10", "11"]
+    
+    #ans = np.zeros(len(bits))
+    #for i in range(0, len(bits)):
+        #ans[i] = correlate_value(bitstream, bits[i])
+    
+    #return labels[np.argmax(ans)]
+
+# From -->> https://stackoverflow.com/questions/3391076/repeat-string-to-certain-length
+def repeat_to_length(string_to_expand, length):
+    return string_to_expand*length
 
 def plot_mag_data(mag):
     
