@@ -22,6 +22,7 @@ import numpy as np
 from scipy import signal, stats
 import matplotlib.pyplot as plt
 import wavio
+import datetime
 
 
 # Print info about the software
@@ -37,12 +38,13 @@ def print_header():
     print(name)
     
     print("### PyRSCW version %s release date %s ###" % (__version__, __date__))
-    print("### Written by %s. Happy Beeping! ###" % __author__)
+    print("### Written by %s. Happy Beeping! ###\n\n" % __author__)
 
 # Use wavio to load the wav file from GQRX
 def open_wav_file(filename):
+    log("Opening: %s" % filename)
     wav_data = wavio.read(filename)
-    print("Wavfile loaded. Len:%i, Fs:%iHz" % (wav_data.data.shape[0], wav_data.rate))
+    log("Wavfile loaded. Len:%i, Fs:%iHz" % (wav_data.data.shape[0], wav_data.rate))
     wav_data.data = wav_data.data[:,0]
     return wav_data
 
@@ -63,7 +65,7 @@ def find_carrier(wav_data):
     
     max_value = np.argmax(Pxx_den)
     
-    print("Carrier found at %0.4fHz" % f[max_value])
+    log("Carrier found at %0.4fHz" % f[max_value])
     
     carrier_freq = f[max_value]
     
@@ -84,7 +86,7 @@ def generate_carriers(wav_data, carrier_freq):
     t = np.linspace(0, sample_length/rate, sample_length, endpoint=False)
     sin_car = np.sin(2*np.pi * f * t)
     cos_car = np.cos(2*np.pi * f * t)
-    print("Carriers Generated")
+    log("Carriers Generated")
     return sin_car, cos_car
 
 # Design LPF to remove signal away from baseband
@@ -100,7 +102,7 @@ def design_lpf(fs, mode, plot = False):
             for tap in f:
                 taps.append(float(tap))
                 
-        print("Filter of order %i loaded" % len(taps))
+        log("Filter of order %i loaded" % len(taps))
     
     if mode == 1:
         # Help from -->> https://scipy-cookbook.readthedocs.io/items/FIRFilter.html
@@ -122,7 +124,7 @@ def design_lpf(fs, mode, plot = False):
         # Use firwin with a Kaiser window to create a lowpass FIR filter.
         taps = signal.firwin(N, cutoff_hz/nyq_rate, window=('kaiser', beta))
         
-        print("Filter of order %i deisgned" % len(taps))
+        log("Filter of order %i deisgned" % len(taps))
     
     if plot:
         w, h = signal.freqz(taps, worN=8000)
@@ -429,6 +431,9 @@ def plot_mag_data(mag):
         plt.plot(i)
     plt.show()
     return
+
+def log(string):
+    print(datetime.datetime.now(), string)
 
 # What if someone tries to run the library file!
 if __name__ == "__main__":
