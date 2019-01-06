@@ -35,7 +35,7 @@ PyRSCW has only been tested with WAV files with sampling rates of 8000 Hz and 48
 If you have any issues or questions please raise an issue on this repo - I'll be happy to help!
 
 ## Example Data for Testing
-TBC
+An 8000Hz, 18 WPM recording from [fldigi](http://www.w1hkj.com) is provided - "fldigigenerator.wav"
 
 ## Notes
 
