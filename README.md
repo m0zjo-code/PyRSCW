@@ -32,14 +32,7 @@ TBC
 
 <h1 align="center"> Satellite Tracking Setup </h1> 
 
-```mermaid
-graph LR
-A[RTL SDR] -- USB --> B[gqrx]
-B -- Write File --> C[*.wav]
-C -- Read File--> D[PyRSCW]
-D -- Write File --> E[Output *.txt]
-F[Gpredict] -- TCP --> B
-```
+![Flow Graph](gph.PNG?raw=true "Flow Graph")
 
 ## Equipment
 To track satellites I use a RTL-SDR V3. For antennas I use a portable V dipole antenna kit and also a broadband LNA. All of these can be purchased from the page below:
