@@ -276,6 +276,10 @@ def bit_synch(bitstream, signal_present, min_length = 1000):
     
     signal_list = []
     
+    # Check to see if we start off with signal already!
+    if signal_present[0] == 1:
+        SIGNAL_STATUS = True
+    
     for i in range(1, signal_len):
         if (signal_present[i] == 1) and (signal_present[i-1] == 0):
             #Start of signal (signal detector)
@@ -362,8 +366,11 @@ def bin_string_to_numpy_array(bin_string):
 
 # Main correlator function. Returns correlation value of two sequences.
 def correlate_value(in1, in2):
+    
+    #plot_numpy_data([in1, in2])
+    
     if len(in1) != len(in2):
-        return 0
+        return -1
     out = np.zeros(len(in1))
     for i in range(0, len(in1)):
         out[i] = in1[i] * in2[i]
@@ -382,12 +389,13 @@ def decode_block(bitstream, alphabet, wpm):
     offset = 0
     tmp_str = ""
     while True:
-        correlator_output = correlate_alphabet(bitstream[0 + offset:22*ts + offset], alphabet, ts)
-        if correlator_output == None:
+        correlator_output = correlate_alphabet(bitstream[0 + offset:44*ts + offset], alphabet, ts)
+        tmp_str = tmp_str + correlator_output[0]
+        if correlator_output[1] == None:
             print("\n### Decode Complete ###")
             return tmp_str
         #print(correlator_output[0], end='', flush=True)
-        tmp_str = tmp_str + correlator_output[0]
+        
         offset = offset + correlator_output[1]
 
 # Use correlator to search through all letters and numbers of alphabet dictionary. 
@@ -414,10 +422,13 @@ def correlate_alphabet(bits, alphabet, ts):
     
     # Find the index of the maxval
     correlator_result = np.argmax(ans)
+        
+    #plt.plot(bits)
+    #plt.show()
     
     # Sync up to the next bit and detect space
     j = 0
-    for offset_delta in range(len(alphabet_values_us[correlator_result]) - 22, len(bits)):
+    for offset_delta in range(len(alphabet_values_us[correlator_result]) - int(ts/2), len(bits)):
         if bits[offset_delta] == 1:
             if j < ts*3:
                 return alphabet_keys[correlator_result], offset_delta
@@ -425,6 +436,8 @@ def correlate_alphabet(bits, alphabet, ts):
                 return alphabet_keys[correlator_result] + " ", offset_delta
         j = j + 1
     
+    # Next bit not found - signal must be over!
+    return alphabet_keys[correlator_result], None
 
 # From -->> https://stackoverflow.com/questions/3391076/repeat-string-to-certain-length
 def repeat_to_length(string_to_expand, length):
@@ -443,6 +456,11 @@ def log(string):
     log_str = str(datetime.datetime.now()) + "\t" + string
     logging.info(log_str)
     
+def output_data(string, work_id):
+    print(string)
+    with open("pyrscw_%s.txt" % work_id, "a+") as f:
+        f.write(string + "\r\n")
+    f.close()
     
 
 # What if someone tries to run the library file!

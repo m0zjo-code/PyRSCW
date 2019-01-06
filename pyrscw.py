@@ -12,6 +12,8 @@
 import pyrscwlib
 from pyrscwlib import log
 
+work_id = "XW2Data"
+
 # Set up variables
 # TODO this will be integrated into command args soon
 wpm = 22
@@ -51,8 +53,6 @@ downsampled_power_data = pyrscwlib.downsample_abs_bb(baseband_data, wav_file.rat
 log("### Calculate Mag ###")
 magnitude_data = pyrscwlib.compute_abs(downsampled_power_data)
 
-pyrscwlib.plot_numpy_data([magnitude_data])
-
 # Smooth the magnitude vector (convolutional method)
 log("### Smooth ###")
 magnitude_data_smoothed = pyrscwlib.smooth_mag(magnitude_data)
@@ -69,11 +69,11 @@ shifted_mag = pyrscwlib.apply_threshold(magnitude_data_smoothed, thresh_vector)
 log("### Detect Signal ###")
 signal_present = pyrscwlib.signal_detect(magnitude_data, detection_threshold = 0.1)
 
+#pyrscwlib.plot_numpy_data([magnitude_data, magnitude_data_smoothed, shifted_mag, signal_present])
+
 # Convert +n and -n to 1 and -1
 log("### Quantise ###")
 bitstream = pyrscwlib.quantise(shifted_mag)
-
-
 
 # From the signal detection vector - determine where the bt starts (to the nearest sample)
 log("### Bit Synch ###")
@@ -83,7 +83,7 @@ signal_synch_list = pyrscwlib.bit_synch(bitstream, signal_present, min_length = 
 log("### Decode ###")
 for i in range(0, len(signal_synch_list)):
     decoder_output = pyrscwlib.decode_block(bitstream[signal_synch_list[i][0]: signal_synch_list[i][1]], pyrscwlib.generate_alphabet(), wpm)
-    print(decoder_output)
+    pyrscwlib.output_data(decoder_output, work_id)
 
 
 
