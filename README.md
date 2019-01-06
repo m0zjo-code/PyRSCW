@@ -1,3 +1,4 @@
+
 <h1 align="center"> PyRSCW </h1> 
 
 PyRSCW is a python tool for decoding machine generated CW (morse code) transmissions from audio files. This tool was inspired and developed using the algorithms from the morse decoding software "RSCW" by PA3FWM ([RSCW](http://wwwhome.cs.utwente.nl/~ptdeboer/ham/rscw/)).
@@ -23,7 +24,13 @@ To run this software, clone this [repo](https://github.com/m0zjo-code/Pyrscw) an
 
 ## Usage
 
-TBC
+pyrscw.py -i inputfile -w wpm -o work_id
+
+ - -i : Filepath for wav file
+ - -w : WPM of transmission
+ - -o : ID for output file
+ 
+PyRSCW has only been tested with WAV files with sampling rates of 8000 Hz and 48000 Hz (although other rates divisible by 1000 should work!).
 
 If you have any issues or questions please raise an issue on this repo - I'll be happy to help!
 
@@ -32,7 +39,7 @@ TBC
 
 ## Notes
 
-- Initial samples eaten by filter - This will be accounted for in the future and only matters if the signal starts immediatly 
+- Initial samples eaten by filter - This will be accounted for in the future and only matters if the signal starts immediately 
 
 - Rather inefficient implementation (lots of Python for loops) - some work will go into increasing the efficiency. There are a lot of places in the code where the speed can be improved (especially wrt the correlator and carrier generator).
 
