@@ -30,9 +30,22 @@ If you have any issues or questions please raise an issue on this repo - I'll be
 ## Example Data for Testing
 TBC
 
+## Notes
+
+- Initial samples eaten by filter - This will be accounted for in the future and only matters if the signal starts immediatly 
+
+- Rather inefficient implementation (lots of Python for loops) - some work will go into increasing the efficiency. There are a lot of places in the code where the speed can be improved (especially wrt the correlator and carrier generator).
+
+
 <h1 align="center"> Satellite Tracking Setup </h1> 
 
-![Flow Graph](gph.PNG?raw=true "Flow Graph")
+Satellite tracking overview:
+
+![Flow Graph](docs/gph.PNG?raw=true "Flow Graph")
+
+Satellite tracking setup image:
+
+![Satellite Tracking Setup](docs/satsetup.jpg?raw=true "Flow Graph")
 
 ## Equipment
 To track satellites I use a RTL-SDR V3. For antennas I use a portable V dipole antenna kit and also a broadband LNA. All of these can be purchased from the page below:
