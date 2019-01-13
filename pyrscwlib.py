@@ -44,12 +44,34 @@ def print_header():
     print("### Written by %s. Happy Beeping! ###\n\n" % __author__)
 
 # Use wavio to load the wav file from GQRX
-def open_wav_file(filename):
+def open_wav_file(filename, resample = None):
     log("Opening: %s" % filename)
     wav_data = wavio.read(filename)
     log("Wavfile loaded. Len:%i, Fs:%iHz" % (wav_data.data.shape[0], wav_data.rate))
-    wav_data.data = wav_data.data[:,0]
+    # Resample down to internal rate for speed (we don't need massive amounts of bw)
+    if resample != None:
+        resampled_wav = resample_wav(wav_data.data[:,0], wav_data.rate, resample)
+        wav_data.data = resampled_wav[0]
+        wav_data.rate = resampled_wav[1]
+        log("Wavfile resampled. Len:%i, Fs:%iHz" % (wav_data.data.shape[0], wav_data.rate))
+    else:
+        wav_data.data = wav_data.data[:,0]
     return wav_data
+
+def resample_wav(wav, in_fs, out_fs):
+    N = in_fs/out_fs
+    if int(N) == N:
+        # Integer rate
+        if int(N) != 1:
+            return signal.decimate(wav, int(N)), out_fs
+        else:
+            log("No decimation required (N = 1)")
+            return wav, in_fs
+    else:
+        # Non Integer Rate
+        log("Non-integer downsampling rates not supported")
+        return wav, in_fs
+        
 
 # Plot section of file (for debugging purposes)
 def plot_file(wav_data):

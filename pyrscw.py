@@ -50,7 +50,7 @@ def main(argv):
 
     # Open file and load into array
     log("### Opening file ###")
-    wav_file = pyrscwlib.open_wav_file(inputfile)
+    wav_file = pyrscwlib.open_wav_file(inputfile, resample = 8000)
 
     # Remove any DC present in the array.
     # TODO this should be a windowed method to run over the file
