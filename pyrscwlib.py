@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #File        pyrscwlib.py
 #Author      Jonathan Rawlinson/M0ZJO
-#Date        05/01/2019
+#Date        13/01/2019
 #Desc.       This is the main software library for the CW decoding software "Pyrscw".
 #            The original inspiration for this software was rscw.c (http://wwwhome.cs.utwente.nl/~ptdeboer/ham/rscw/) 
 #            written by PA3FWM but the implemntation differs in a number of ways. This software was written to 

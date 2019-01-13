@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #File        pyrscw.py
 #Author      Jonathan Rawlinson/M0ZJO
-#Date        05/01/2019
+#Date        13/01/2019
 #Desc.       This is the main script for the CW decoding software "Pyrscw".
 #            The original inspiration for this software was rscw.c (http://wwwhome.cs.utwente.nl/~ptdeboer/ham/rscw/) 
 #            written by PA3FWM but the implemntation differs in a number of ways. This software was written to 
@@ -20,8 +20,12 @@ def main(argv):
     except getopt.GetoptError:
         print("Options error:")
         print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
-        
         sys.exit(2)
+        
+    if len(args) == 0:
+        print("Options error:")
+        print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
+        
     for opt, arg in opts:
         if opt == '-h':
             print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
@@ -44,13 +48,15 @@ def main(argv):
 
     # Set up variables
     min_signal_len = 2000 #In ms
-    threshold_value = 0.5 #Normalised to varience of signal
+    threshold_value = 0.1 #Normalised to varience of signal
+    internal_resample_val = 8000 #Internal fs for initial DSP (Reduce for speed)
+    detection_threshold = 0.1 #Value to determine if a signal is present
 
     pyrscwlib.print_header()
 
     # Open file and load into array
     log("### Opening file ###")
-    wav_file = pyrscwlib.open_wav_file(inputfile, resample = 8000)
+    wav_file = pyrscwlib.open_wav_file(inputfile, resample = internal_resample_val)
 
     # Remove any DC present in the array.
     # TODO this should be a windowed method to run over the file
@@ -93,7 +99,7 @@ def main(argv):
 
     # Detect if a CW signal is present (or any signal for that matter) by looking at the standard deviation
     log("### Detect Signal ###")
-    signal_present = pyrscwlib.signal_detect(magnitude_data, detection_threshold = 0.1)
+    signal_present = pyrscwlib.signal_detect(magnitude_data, detection_threshold = detection_threshold)
 
     #pyrscwlib.plot_numpy_data([magnitude_data, magnitude_data_smoothed, shifted_mag, signal_present])
 
