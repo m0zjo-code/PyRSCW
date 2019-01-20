@@ -72,4 +72,4 @@ I use the following software packages:
 
 For more info on how to set these packages up please look here.
 
-- [Setting up a Portable RTL-SDR Tracking Setup](docs/`SettingupaPortableRTL-SDRTrackingSetup.md)
+- [Setting up a Portable RTL-SDR Tracking Setup](https://github.com/m0zjo-code/Pyrscw/blob/master/docs/SettingupaPortableRTL-SDRTrackingSetup.md)
