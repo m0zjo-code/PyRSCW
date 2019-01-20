@@ -70,5 +70,6 @@ I use the following software packages:
  - gqrx (for interfacing with the RTL-SDR/other SDR) - http://gqrx.dk
  - PyRSCW (for decoding the CW telemetry of course!)
 
-For more info on how to set these packages up please look here (TODO).
+For more info on how to set these packages up please look here.
 
+- [Setting up a Portable RTL-SDR Tracking Setup](docs/`SettingupaPortableRTL-SDRTrackingSetup.md)
