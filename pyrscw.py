@@ -15,6 +15,7 @@ import sys, getopt
 def main(argv):
     inputfile = ''
     wpm = ''
+    
     try:
         opts, args = getopt.getopt(argv,"hi:w:o:",["ifile=","wpm=","work_id="])
     except getopt.GetoptError:
@@ -22,10 +23,10 @@ def main(argv):
         print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
         sys.exit(2)
         
-    if len(args) == 0:
-        print("Options error:")
+    if len(opts) == 0:
+        print("Please run with the following options:")
         print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
-        
+        sys.exit()
     for opt, arg in opts:
         if opt == '-h':
             print('pyrscw.py -i <inputfile> -w <wpm> -o <work_id>')
@@ -39,6 +40,8 @@ def main(argv):
     print("### Input file: ", inputfile)
     print("### WPM is:", wpm)
     print("### Work ID is:", work_id)  
+    
+    print("### Setting Up DSP Engine ###")
     
     # Import the DSP library
     import pyrscwlib
@@ -106,7 +109,7 @@ def main(argv):
     # Convert +n and -n to 1 and -1
     log("### Quantise ###")
     bitstream = pyrscwlib.quantise(shifted_mag)
-
+    
     # From the signal detection vector - determine where the bt starts (to the nearest sample)
     log("### Bit Synch ###")
     signal_synch_list = pyrscwlib.bit_synch(bitstream, signal_present, min_length = min_signal_len)
@@ -114,7 +117,10 @@ def main(argv):
     # Decode the synced bitstream
     log("### Decode ###")
     for i in range(0, len(signal_synch_list)):
+        # Decode bits
         decoder_output = pyrscwlib.decode_block(bitstream[signal_synch_list[i][0]: signal_synch_list[i][1]], pyrscwlib.generate_alphabet(), wpm)
+        
+        # Save the data to disk
         pyrscwlib.output_data(decoder_output, work_id)
 
 if __name__ == "__main__":

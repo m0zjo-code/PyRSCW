@@ -29,13 +29,15 @@ pyrscw.py -i inputfile -w wpm -o work_id
  - -i : Filepath for wav file
  - -w : WPM of transmission
  - -o : ID for output file
- 
+
 PyRSCW has only been tested with WAV files with sampling rates of 8000 Hz and 48000 Hz (although other rates divisible by 1000 should work!).
 
 If you have any issues or questions please raise an issue on this repo - I'll be happy to help!
 
 ## Example Data for Testing
 An 8000Hz, 18 WPM recording from [fldigi](http://www.w1hkj.com) is provided - "fldigigenerator.wav"
+
+![Flow Graph](docs/Screengrab.PNG?raw=true "Example being processed")
 
 ## Notes
 
@@ -57,7 +59,7 @@ Satellite tracking setup image:
 ## Equipment
 To track satellites I use a RTL-SDR V3. For antennas I use a portable V dipole antenna kit and also a broadband LNA. All of these can be purchased from the page below:
  - https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/   
- 
+
 I would recommend buying through this website as there are lots of fakes on places like eBay.
 
 

@@ -330,32 +330,32 @@ def bit_synch(bitstream, signal_present, min_length = 1000):
 def generate_alphabet():
     
     alphabet = {}
-    alphabet["a"] = "10111000"
-    alphabet["b"] = "111010101000"
-    alphabet["c"] = "11101011101000"
-    alphabet["d"] = "1110101000"
-    alphabet["e"] = "1000"
-    alphabet["f"] = "101011101000"
-    alphabet["g"] = "111011101000"
-    alphabet["h"] = "1010101000"
-    alphabet["i"] = "101000"
-    alphabet["j"] = "1011101110111000"
-    alphabet["k"] = "111010111000"
-    alphabet["l"] = "101110101000"
-    alphabet["m"] = "1110111000"
-    alphabet["n"] = "11101000"
-    alphabet["o"] = "11101110111000"
-    alphabet["p"] = "10111011101000"
-    alphabet["q"] = "1110111010111000"
-    alphabet["r"] = "1011101000"
-    alphabet["s"] = "10101000"
-    alphabet["t"] = "111000"
-    alphabet["u"] = "1010111000"
-    alphabet["v"] = "101010111000"
-    alphabet["w"] = "101110111000"
-    alphabet["x"] = "11101010111000"
-    alphabet["y"] = "1110101110111000"
-    alphabet["z"] = "11101110101000"
+    alphabet["A"] = "10111000"
+    alphabet["B"] = "111010101000"
+    alphabet["C"] = "11101011101000"
+    alphabet["D"] = "1110101000"
+    alphabet["E"] = "1000"
+    alphabet["F"] = "101011101000"
+    alphabet["G"] = "111011101000"
+    alphabet["H"] = "1010101000"
+    alphabet["I"] = "101000"
+    alphabet["J"] = "1011101110111000"
+    alphabet["K"] = "111010111000"
+    alphabet["L"] = "101110101000"
+    alphabet["M"] = "1110111000"
+    alphabet["N"] = "11101000"
+    alphabet["O"] = "11101110111000"
+    alphabet["P"] = "10111011101000"
+    alphabet["Q"] = "1110111010111000"
+    alphabet["R"] = "1011101000"
+    alphabet["S"] = "10101000"
+    alphabet["T"] = "111000"
+    alphabet["U"] = "1010111000"
+    alphabet["V"] = "101010111000"
+    alphabet["W"] = "101110111000"
+    alphabet["X"] = "11101010111000"
+    alphabet["Y"] = "1110101110111000"
+    alphabet["Z"] = "11101110101000"
     alphabet["0"] = "1110111011101110111000"
     alphabet["1"] = "10111011101110111000"
     alphabet["2"] = "101011101110111000"
@@ -414,7 +414,7 @@ def decode_block(bitstream, alphabet, wpm):
         correlator_output = correlate_alphabet(bitstream[0 + offset:44*ts + offset], alphabet, ts)
         tmp_str = tmp_str + correlator_output[0]
         if correlator_output[1] == None:
-            print("\n### Decode Complete ###")
+            log("### Decode Complete ###")
             return tmp_str
         #print(correlator_output[0], end='', flush=True)
         
@@ -444,9 +444,6 @@ def correlate_alphabet(bits, alphabet, ts):
     
     # Find the index of the maxval
     correlator_result = np.argmax(ans)
-        
-    #plt.plot(bits)
-    #plt.show()
     
     # Sync up to the next bit and detect space
     j = 0
@@ -467,24 +464,25 @@ def repeat_to_length(string_to_expand, length):
 
 # Plot a series of numpy arrays (debugging...)
 def plot_numpy_data(mag):
-    
     for i in mag:
         plt.plot(i)
     plt.show()
     return
-
+    
+# Log status with a timestamp
 def log(string):
     print(datetime.datetime.now(), string)
     log_str = str(datetime.datetime.now()) + "\t" + string
     logging.info(log_str)
     
+# Write output data to disk
 def output_data(string, work_id):
-    print(string)
+    print()
+    print("%s: %s" % (work_id,string))
     with open("pyrscw_%s.txt" % work_id, "a+") as f:
         f.write(string + "\r\n")
     f.close()
     
-
 # What if someone tries to run the library file!
 if __name__ == "__main__":
     # execute only if run as a script
