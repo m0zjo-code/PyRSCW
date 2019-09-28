@@ -1,0 +1,657 @@
+INFO:root:2019-09-19 22:55:55.511366	### Opening file ###
+INFO:root:2019-09-19 22:55:55.511730	Opening: UOSAT2.wav
+INFO:root:2019-09-19 22:55:55.545408	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 22:55:56.773066	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 22:55:56.778573	### Remove DC ###
+INFO:root:2019-09-19 23:10:42.271148	### Opening file ###
+INFO:root:2019-09-19 23:10:42.272725	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:10:42.468726	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:11:26.227071	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:11:28.000722	### Remove DC ###
+INFO:root:2019-09-19 23:11:28.129943	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:12:01.429955	### Opening file ###
+INFO:root:2019-09-19 23:12:01.430282	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:12:01.635306	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:12:02.785978	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:12:02.786348	### Remove DC ###
+INFO:root:2019-09-19 23:12:02.874460	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:12:15.417659	### Opening file ###
+INFO:root:2019-09-19 23:12:15.417967	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:12:15.454037	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:12:16.584458	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:12:16.584821	### Remove DC ###
+INFO:root:2019-09-19 23:12:16.665338	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:12:52.231569	### Opening file ###
+INFO:root:2019-09-19 23:12:52.231883	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:12:52.272721	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:12:53.398607	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:12:53.398976	### Remove DC ###
+INFO:root:2019-09-19 23:12:53.479877	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:12:53.482103	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:13:11.766307	### Opening file ###
+INFO:root:2019-09-19 23:13:11.766673	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:13:11.799535	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:13:12.927522	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:13:12.927878	### Remove DC ###
+INFO:root:2019-09-19 23:13:13.010577	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:13:13.012766	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:13:32.454076	### Opening file ###
+INFO:root:2019-09-19 23:13:32.454409	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:13:32.492697	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:13:33.622314	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:13:33.622687	### Remove DC ###
+INFO:root:2019-09-19 23:13:33.706643	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:13:33.708802	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:13:58.585553	### Opening file ###
+INFO:root:2019-09-19 23:13:58.585902	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:13:58.620732	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:13:59.748590	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:13:59.748988	### Remove DC ###
+INFO:root:2019-09-19 23:13:59.831613	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:13:59.836586	Filter of order 51 deisgned
+INFO:root:2019-09-19 23:14:30.635479	### Opening file ###
+INFO:root:2019-09-19 23:14:30.635799	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:14:30.670131	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:14:31.795155	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:14:31.795514	### Remove DC ###
+INFO:root:2019-09-19 23:14:31.878045	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:14:31.886498	Filter of order 101 deisgned
+INFO:root:2019-09-19 23:20:03.646654	### Opening file ###
+INFO:root:2019-09-19 23:20:03.646996	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:20:03.689364	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:20:04.826394	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:20:04.826782	### Remove DC ###
+INFO:root:2019-09-19 23:20:04.909609	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:20:05.076508	Filter of order 1001 deisgned
+INFO:root:2019-09-19 23:20:28.193800	### Opening file ###
+INFO:root:2019-09-19 23:20:28.194139	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:20:28.233426	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:20:29.360427	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:20:29.360780	### Remove DC ###
+INFO:root:2019-09-19 23:20:29.442543	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:20:29.458474	Filter of order 201 deisgned
+INFO:root:2019-09-19 23:20:55.438467	### Opening file ###
+INFO:root:2019-09-19 23:20:55.438804	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:20:55.473747	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:20:56.603274	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:20:56.603639	### Remove DC ###
+INFO:root:2019-09-19 23:20:56.684665	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:20:56.719137	Filter of order 401 deisgned
+INFO:root:2019-09-19 23:21:29.771998	### Opening file ###
+INFO:root:2019-09-19 23:21:29.772331	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:21:29.807782	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:21:30.933323	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:21:30.933679	### Remove DC ###
+INFO:root:2019-09-19 23:21:31.016020	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:21:31.027538	Filter of order 141 deisgned
+INFO:root:2019-09-19 23:22:09.589666	### Opening file ###
+INFO:root:2019-09-19 23:22:09.590002	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:22:09.625698	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:22:10.752276	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:22:10.752668	### Remove DC ###
+INFO:root:2019-09-19 23:22:10.834795	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:22:10.841698	Filter of order 81 deisgned
+INFO:root:2019-09-19 23:23:13.237494	### Opening file ###
+INFO:root:2019-09-19 23:23:13.237812	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:23:13.270445	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:23:14.399006	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:23:14.399369	### Remove DC ###
+INFO:root:2019-09-19 23:23:14.480343	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:23:14.487242	Filter of order 81 deisgned
+INFO:root:2019-09-19 23:23:40.703586	### Opening file ###
+INFO:root:2019-09-19 23:23:40.703911	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:23:40.739326	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:23:41.865253	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:23:41.890070	### Remove DC ###
+INFO:root:2019-09-19 23:23:41.975033	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:23:41.982091	Filter of order 81 deisgned
+INFO:root:2019-09-19 23:24:23.216677	### Opening file ###
+INFO:root:2019-09-19 23:24:23.217042	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:24:23.251559	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:24:24.381006	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:24:24.381390	### Remove DC ###
+INFO:root:2019-09-19 23:24:24.488873	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:24:24.495726	Filter of order 81 deisgned
+INFO:root:2019-09-19 23:24:41.887452	### Opening file ###
+INFO:root:2019-09-19 23:24:41.887788	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:24:41.922814	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:24:43.053092	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:24:43.053449	### Remove DC ###
+INFO:root:2019-09-19 23:24:43.138121	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:24:43.162928	Filter of order 301 deisgned
+INFO:root:2019-09-19 23:24:59.985432	### Opening file ###
+INFO:root:2019-09-19 23:24:59.985763	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:25:00.019154	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:25:01.147769	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:25:01.148140	### Remove DC ###
+INFO:root:2019-09-19 23:25:01.229149	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:25:01.245306	Filter of order 201 deisgned
+INFO:root:2019-09-19 23:25:34.918569	### Opening file ###
+INFO:root:2019-09-19 23:25:34.918897	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:25:34.952581	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:25:36.080819	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:25:36.081226	### Remove DC ###
+INFO:root:2019-09-19 23:25:36.162651	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:25:36.179011	Filter of order 201 deisgned
+INFO:root:2019-09-19 23:26:23.682672	### Opening file ###
+INFO:root:2019-09-19 23:26:23.683095	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:26:23.716643	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:26:24.851385	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:26:24.851770	### Remove DC ###
+INFO:root:2019-09-19 23:26:24.935319	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:26:24.937573	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:26:53.010115	### Opening file ###
+INFO:root:2019-09-19 23:26:53.010463	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:26:53.044601	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:26:54.181000	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:26:54.181353	### Remove DC ###
+INFO:root:2019-09-19 23:26:54.264005	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:26:54.266245	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:27:23.801135	### Opening file ###
+INFO:root:2019-09-19 23:27:23.801455	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:27:23.840217	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:27:24.975534	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:27:24.975892	### Remove DC ###
+INFO:root:2019-09-19 23:27:25.058874	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:27:49.618120	### Opening file ###
+INFO:root:2019-09-19 23:27:49.618453	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:27:49.651890	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:27:50.784136	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:27:50.784490	### Remove DC ###
+INFO:root:2019-09-19 23:27:50.869291	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:27:50.871743	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:28:12.105903	### Opening file ###
+INFO:root:2019-09-19 23:28:12.106246	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:28:12.140989	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:28:13.274512	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:28:13.274881	### Remove DC ###
+INFO:root:2019-09-19 23:28:13.356132	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:28:13.358407	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:28:44.446678	### Opening file ###
+INFO:root:2019-09-19 23:28:44.447009	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:28:44.481185	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:28:45.616707	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:28:45.617166	### Remove DC ###
+INFO:root:2019-09-19 23:28:45.698934	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:28:45.701432	Filter of order 2 deisgned
+INFO:root:2019-09-19 23:29:04.258752	### Opening file ###
+INFO:root:2019-09-19 23:29:04.259211	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:29:04.294983	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:29:05.429277	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:29:05.429649	### Remove DC ###
+INFO:root:2019-09-19 23:29:05.512653	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:29:19.184913	### Opening file ###
+INFO:root:2019-09-19 23:29:19.185434	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:29:19.220654	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:29:20.351472	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:29:20.351836	### Remove DC ###
+INFO:root:2019-09-19 23:29:20.459912	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:29:20.462148	Filter of order 11 deisgned
+INFO:root:2019-09-19 23:29:34.319587	### Opening file ###
+INFO:root:2019-09-19 23:29:34.319914	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:29:34.354372	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:29:35.490333	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:29:35.490695	### Remove DC ###
+INFO:root:2019-09-19 23:29:35.574439	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:29:35.583017	Filter of order 101 deisgned
+INFO:root:2019-09-19 23:29:49.986029	### Opening file ###
+INFO:root:2019-09-19 23:29:49.986385	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:29:50.020219	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:29:51.152318	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:29:51.152680	### Remove DC ###
+INFO:root:2019-09-19 23:29:51.233929	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:29:51.237035	Filter of order 25 deisgned
+INFO:root:2019-09-19 23:30:13.550057	### Opening file ###
+INFO:root:2019-09-19 23:30:13.550434	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:30:13.583524	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:30:14.715485	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:30:14.715848	### Remove DC ###
+INFO:root:2019-09-19 23:30:14.819855	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:30:14.823064	Filter of order 25 deisgned
+INFO:root:2019-09-19 23:30:33.144411	### Opening file ###
+INFO:root:2019-09-19 23:30:33.144725	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:30:33.187035	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:30:34.317870	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:30:34.318303	### Remove DC ###
+INFO:root:2019-09-19 23:30:34.401980	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:30:34.405673	Filter of order 31 deisgned
+INFO:root:2019-09-19 23:30:44.892089	### Opening file ###
+INFO:root:2019-09-19 23:30:44.892416	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:30:44.927146	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:30:46.116651	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:30:46.117057	### Remove DC ###
+INFO:root:2019-09-19 23:30:46.199753	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:30:46.204098	Filter of order 41 deisgned
+INFO:root:2019-09-19 23:30:57.092494	### Opening file ###
+INFO:root:2019-09-19 23:30:57.092815	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:30:57.126421	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:30:58.260463	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:30:58.260813	### Remove DC ###
+INFO:root:2019-09-19 23:30:58.343276	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:30:58.345795	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:31:17.180412	### Opening file ###
+INFO:root:2019-09-19 23:31:17.180735	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:31:17.213775	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:31:18.344775	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:31:18.345179	### Remove DC ###
+INFO:root:2019-09-19 23:31:18.453167	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:31:18.455880	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:32:04.984988	### Opening file ###
+INFO:root:2019-09-19 23:32:04.985426	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:32:05.025350	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:32:06.160611	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:32:06.161021	### Remove DC ###
+INFO:root:2019-09-19 23:32:06.241517	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:32:06.243988	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:32:06.246218	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:34:03.997379	### Opening file ###
+INFO:root:2019-09-19 23:34:03.997733	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:34:04.032114	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:34:05.161037	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:34:05.161430	### Remove DC ###
+INFO:root:2019-09-19 23:34:05.242846	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:34:05.245748	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:34:07.368555	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:34:28.769351	### Opening file ###
+INFO:root:2019-09-19 23:34:28.769696	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:34:28.802158	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:34:29.928286	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:34:29.928667	### Remove DC ###
+INFO:root:2019-09-19 23:34:30.039996	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:34:46.455470	### Opening file ###
+INFO:root:2019-09-19 23:34:46.455800	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:34:46.489057	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:34:47.620217	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:34:47.620573	### Remove DC ###
+INFO:root:2019-09-19 23:34:47.701382	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:35:05.499161	### Opening file ###
+INFO:root:2019-09-19 23:35:05.499481	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:35:05.532211	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:35:06.659747	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:35:06.660086	### Remove DC ###
+INFO:root:2019-09-19 23:35:06.740019	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:35:06.742751	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:35:10.268165	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:36:54.193685	### Opening file ###
+INFO:root:2019-09-19 23:36:54.194029	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:36:54.227970	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:36:55.358441	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:36:55.358800	### Remove DC ###
+INFO:root:2019-09-19 23:36:55.439385	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:36:55.441858	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:36:58.388999	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:37:23.140251	### Opening file ###
+INFO:root:2019-09-19 23:37:23.140600	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:37:23.174518	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:37:24.299695	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:37:24.300067	### Remove DC ###
+INFO:root:2019-09-19 23:37:24.381542	### Applying carriers and filter ###
+INFO:root:2019-09-19 23:37:24.383997	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:37:24.386331	Filter of order 15 deisgned
+INFO:root:2019-09-19 23:39:09.630281	### Opening file ###
+INFO:root:2019-09-19 23:39:09.630614	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:39:09.663535	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:39:10.790876	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:39:10.791238	### Remove DC ###
+INFO:root:2019-09-19 23:39:10.894985	### Applying filters ###
+INFO:root:2019-09-19 23:39:10.897533	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:39:10.899771	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:40:53.673025	### Opening file ###
+INFO:root:2019-09-19 23:40:53.673354	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:40:53.707121	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:40:54.832682	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:40:54.833130	### Remove DC ###
+INFO:root:2019-09-19 23:40:54.913736	### Applying filters ###
+INFO:root:2019-09-19 23:40:54.916402	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:40:54.918745	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:45:44.344388	### Opening file ###
+INFO:root:2019-09-19 23:45:44.344733	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:45:44.542206	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:45:45.690257	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:45:45.690617	### Remove DC ###
+INFO:root:2019-09-19 23:45:45.771286	### Applying filters ###
+INFO:root:2019-09-19 23:45:45.773734	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:45:45.776006	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:45:53.225759	### Calculate Mag ###
+INFO:root:2019-09-19 23:47:55.194974	### Opening file ###
+INFO:root:2019-09-19 23:47:55.195305	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:47:55.234162	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:47:56.365490	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:47:56.365848	### Remove DC ###
+INFO:root:2019-09-19 23:47:56.446194	### Applying filters ###
+INFO:root:2019-09-19 23:47:56.448715	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:47:56.472810	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:47:56.697854	### Calculate Mag ###
+INFO:root:2019-09-19 23:48:43.631291	### Opening file ###
+INFO:root:2019-09-19 23:48:43.631801	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:48:43.670395	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:48:44.804462	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:48:44.804824	### Remove DC ###
+INFO:root:2019-09-19 23:48:44.886951	### Applying filters ###
+INFO:root:2019-09-19 23:48:44.889436	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:48:44.891626	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:48:45.117284	### Calculate Mag ###
+INFO:root:2019-09-19 23:48:46.418497	### Smooth ###
+INFO:root:2019-09-19 23:49:11.311640	### Opening file ###
+INFO:root:2019-09-19 23:49:11.312006	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:49:11.346616	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:49:12.479246	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:49:12.479611	### Remove DC ###
+INFO:root:2019-09-19 23:49:12.559534	### Applying filters ###
+INFO:root:2019-09-19 23:49:12.561993	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:49:12.564138	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:49:12.788784	### Calculate Mag ###
+INFO:root:2019-09-19 23:49:14.092490	### Smooth ###
+INFO:root:2019-09-19 23:51:07.144457	### Opening file ###
+INFO:root:2019-09-19 23:51:07.144812	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:51:07.181746	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:51:08.331609	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:51:08.331966	### Remove DC ###
+INFO:root:2019-09-19 23:51:08.414798	### Applying filters ###
+INFO:root:2019-09-19 23:51:08.417292	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:51:08.419468	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:51:08.644187	### Calculate Mag ###
+INFO:root:2019-09-19 23:51:09.950501	### Smooth ###
+INFO:root:2019-09-19 23:52:10.845499	### Opening file ###
+INFO:root:2019-09-19 23:52:10.845868	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:52:10.882525	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:52:12.018733	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:52:12.019134	### Remove DC ###
+INFO:root:2019-09-19 23:52:12.102357	### Applying filters ###
+INFO:root:2019-09-19 23:52:12.104759	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:52:12.107017	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:52:12.331825	### Calculate Mag ###
+INFO:root:2019-09-19 23:52:13.675362	### Smooth ###
+INFO:root:2019-09-19 23:52:50.448742	### Opening file ###
+INFO:root:2019-09-19 23:52:50.449126	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:52:50.483327	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:52:51.616286	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:52:51.616641	### Remove DC ###
+INFO:root:2019-09-19 23:52:51.710277	### Applying filters ###
+INFO:root:2019-09-19 23:52:51.712745	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:52:51.715404	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:52:51.940784	### Calculate Mag ###
+INFO:root:2019-09-19 23:52:53.234335	### Smooth ###
+INFO:root:2019-09-19 23:53:26.102471	### Opening file ###
+INFO:root:2019-09-19 23:53:26.102945	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:53:26.136312	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:53:27.275674	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:53:27.276291	### Remove DC ###
+INFO:root:2019-09-19 23:53:27.359853	### Applying filters ###
+INFO:root:2019-09-19 23:53:27.362382	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:53:27.364640	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:53:27.589947	### Calculate Mag ###
+INFO:root:2019-09-19 23:53:28.924194	### Smooth ###
+INFO:root:2019-09-19 23:54:04.696311	### Opening file ###
+INFO:root:2019-09-19 23:54:04.696670	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:54:04.730705	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:54:05.866423	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:54:05.866783	### Remove DC ###
+INFO:root:2019-09-19 23:54:05.950532	### Applying filters ###
+INFO:root:2019-09-19 23:54:05.953017	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:54:05.955553	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:54:06.200644	### Calculate Mag ###
+INFO:root:2019-09-19 23:54:07.504818	### Smooth ###
+INFO:root:2019-09-19 23:55:28.165824	### Opening file ###
+INFO:root:2019-09-19 23:55:28.166150	Opening: UOSAT2.wav
+INFO:root:2019-09-19 23:55:28.200604	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-19 23:55:29.342607	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-19 23:55:29.342974	### Remove DC ###
+INFO:root:2019-09-19 23:55:29.426518	### Applying filters ###
+INFO:root:2019-09-19 23:55:29.429034	Filter of order 15 deisgned (high)
+INFO:root:2019-09-19 23:55:29.431227	Filter of order 15 deisgned (low)
+INFO:root:2019-09-19 23:55:29.657057	### Calculate Mag ###
+INFO:root:2019-09-19 23:55:30.952628	### Smooth ###
+INFO:root:2019-09-20 00:10:00.642338	### Opening file ###
+INFO:root:2019-09-20 00:10:00.642663	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:10:00.677098	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:10:01.816961	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:10:01.817349	### Remove DC ###
+INFO:root:2019-09-20 00:10:01.899566	### Applying filters ###
+INFO:root:2019-09-20 00:10:01.902136	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:10:01.904435	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:10:02.130068	### Calculate Mag ###
+INFO:root:2019-09-20 00:10:03.434078	### Smooth ###
+INFO:root:2019-09-20 00:10:30.716476	### Quantise ###
+INFO:root:2019-09-20 00:10:45.018502	### Opening file ###
+INFO:root:2019-09-20 00:10:45.018852	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:10:45.053273	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:10:46.191480	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:10:46.191839	### Remove DC ###
+INFO:root:2019-09-20 00:10:46.275126	### Applying filters ###
+INFO:root:2019-09-20 00:10:46.277610	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:10:46.279975	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:10:46.504636	### Calculate Mag ###
+INFO:root:2019-09-20 00:10:47.821709	### Smooth ###
+INFO:root:2019-09-20 00:11:00.559769	### Quantise ###
+INFO:root:2019-09-20 00:18:03.385235	### Bit Synch ###
+INFO:root:2019-09-20 00:25:49.331522	### Opening file ###
+INFO:root:2019-09-20 00:25:49.331929	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:25:49.529289	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:25:50.677991	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:25:50.678353	### Remove DC ###
+INFO:root:2019-09-20 00:25:50.758965	### Applying filters ###
+INFO:root:2019-09-20 00:25:50.761435	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:25:50.763816	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:25:50.989255	### Calculate Mag ###
+INFO:root:2019-09-20 00:25:52.288383	### Smooth ###
+INFO:root:2019-09-20 00:50:17.365088	### Opening file ###
+INFO:root:2019-09-20 00:50:17.366813	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:50:17.568786	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:50:27.435834	### Opening file ###
+INFO:root:2019-09-20 00:50:27.436203	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:50:27.468223	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:50:28.612740	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:50:28.613129	### Remove DC ###
+INFO:root:2019-09-20 00:50:28.688299	### Applying filters ###
+INFO:root:2019-09-20 00:50:28.690792	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:50:28.693075	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:50:28.919843	### Calculate Mag ###
+INFO:root:2019-09-20 00:50:30.221970	### Smooth ###
+INFO:root:2019-09-20 00:50:36.726578	### Quantise ###
+INFO:root:2019-09-20 00:51:23.088132	### Bit Synch ###
+INFO:root:2019-09-20 00:51:37.822728	### Opening file ###
+INFO:root:2019-09-20 00:51:37.823061	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:51:37.853253	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:51:38.961363	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:51:38.961726	### Remove DC ###
+INFO:root:2019-09-20 00:51:39.034356	### Applying filters ###
+INFO:root:2019-09-20 00:51:39.036919	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:51:39.039086	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:51:39.262398	### Calculate Mag ###
+INFO:root:2019-09-20 00:51:40.578933	### Smooth ###
+INFO:root:2019-09-20 00:51:47.090367	### Quantise ###
+INFO:root:2019-09-20 00:55:44.419350	### Opening file ###
+INFO:root:2019-09-20 00:55:44.420156	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:55:44.450019	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:55:45.555356	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:55:45.555739	### Remove DC ###
+INFO:root:2019-09-20 00:55:45.627589	### Applying filters ###
+INFO:root:2019-09-20 00:55:45.630081	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:55:45.632328	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:55:45.865401	### Calculate Mag ###
+INFO:root:2019-09-20 00:55:47.157517	### Smooth ###
+INFO:root:2019-09-20 00:55:55.320529	### Quantise ###
+INFO:root:2019-09-20 00:57:35.507374	### Opening file ###
+INFO:root:2019-09-20 00:57:35.507726	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:57:35.537567	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:57:36.648058	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:57:36.648437	### Remove DC ###
+INFO:root:2019-09-20 00:57:36.720284	### Applying filters ###
+INFO:root:2019-09-20 00:57:36.722729	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:57:36.724943	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:57:36.948875	### Calculate Mag ###
+INFO:root:2019-09-20 00:57:38.251135	### Smooth ###
+INFO:root:2019-09-20 00:57:46.435168	### Quantise ###
+INFO:root:2019-09-20 00:59:00.628049	### Opening file ###
+INFO:root:2019-09-20 00:59:00.628436	Opening: UOSAT2.wav
+INFO:root:2019-09-20 00:59:00.658650	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 00:59:01.889015	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 00:59:01.889396	### Remove DC ###
+INFO:root:2019-09-20 00:59:01.962119	### Applying filters ###
+INFO:root:2019-09-20 00:59:01.964637	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 00:59:01.966891	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 00:59:02.190046	### Calculate Mag ###
+INFO:root:2019-09-20 00:59:03.489042	### Smooth ###
+INFO:root:2019-09-20 00:59:04.688064	### Quantise ###
+INFO:root:2019-09-20 00:59:48.961490	### Bit Synch ###
+INFO:root:2019-09-20 01:05:14.466423	### Opening file ###
+INFO:root:2019-09-20 01:05:14.466762	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:05:14.495515	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:05:15.633039	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 01:05:15.633419	### Remove DC ###
+INFO:root:2019-09-20 01:05:15.730445	### Applying filters ###
+INFO:root:2019-09-20 01:05:15.732982	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:05:15.735175	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:05:15.960114	### Calculate Mag ###
+INFO:root:2019-09-20 01:05:17.263433	### Smooth ###
+INFO:root:2019-09-20 01:05:26.111477	### Quantise ###
+INFO:root:2019-09-20 01:05:51.781224	### Opening file ###
+INFO:root:2019-09-20 01:05:51.781560	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:05:51.813332	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:05:53.490800	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 01:05:53.491170	### Remove DC ###
+INFO:root:2019-09-20 01:05:53.567329	### Applying filters ###
+INFO:root:2019-09-20 01:05:53.569848	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:05:53.572036	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:05:53.795668	### Calculate Mag ###
+INFO:root:2019-09-20 01:05:55.111372	### Smooth ###
+INFO:root:2019-09-20 01:05:55.572962	### Quantise ###
+INFO:root:2019-09-20 01:09:00.129043	### Opening file ###
+INFO:root:2019-09-20 01:09:00.129373	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:09:00.159737	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:09:01.269788	Wavfile resampled. Len:1995275, Fs:8000Hz
+INFO:root:2019-09-20 01:09:01.270147	### Remove DC ###
+INFO:root:2019-09-20 01:09:01.342100	### Applying filters ###
+INFO:root:2019-09-20 01:09:01.344666	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:09:01.346845	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:09:01.570406	### Calculate Mag ###
+INFO:root:2019-09-20 01:09:02.875147	### Smooth ###
+INFO:root:2019-09-20 01:09:03.381675	### Quantise ###
+INFO:root:2019-09-20 01:11:14.543504	### Opening file ###
+INFO:root:2019-09-20 01:11:14.543828	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:11:14.573623	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:11:14.573961	### Remove DC ###
+INFO:root:2019-09-20 01:11:14.725104	### Applying filters ###
+INFO:root:2019-09-20 01:11:14.727587	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:11:14.729870	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:11:16.207177	### Calculate Mag ###
+INFO:root:2019-09-20 01:11:23.897958	### Smooth ###
+INFO:root:2019-09-20 01:11:30.034524	### Quantise ###
+INFO:root:2019-09-20 01:11:36.327722	### Bit Synch ###
+INFO:root:2019-09-20 01:11:47.089178	### Opening file ###
+INFO:root:2019-09-20 01:11:47.089524	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:11:47.318122	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:11:47.318624	### Remove DC ###
+INFO:root:2019-09-20 01:11:47.475660	### Applying filters ###
+INFO:root:2019-09-20 01:11:47.478223	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:11:47.480477	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:12:40.139498	### Calculate Mag ###
+INFO:root:2019-09-20 01:13:22.593986	### Opening file ###
+INFO:root:2019-09-20 01:13:22.594486	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:13:22.801059	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:13:23.939797	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:13:23.940227	### Remove DC ###
+INFO:root:2019-09-20 01:13:24.026840	### Applying filters ###
+INFO:root:2019-09-20 01:13:24.029447	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:13:24.031600	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:14:07.696167	### Calculate Mag ###
+INFO:root:2019-09-20 01:14:10.655307	### Smooth ###
+INFO:root:2019-09-20 01:14:11.391954	### Quantise ###
+INFO:root:2019-09-20 01:15:22.466093	### Bit Synch ###
+INFO:root:2019-09-20 01:15:27.285187	### Opening file ###
+INFO:root:2019-09-20 01:15:27.285561	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:15:27.318747	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:15:28.439571	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:15:28.466152	### Remove DC ###
+INFO:root:2019-09-20 01:15:28.554417	### Applying filters ###
+INFO:root:2019-09-20 01:15:28.556940	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:15:28.559159	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:15:28.894846	### Calculate Mag ###
+INFO:root:2019-09-20 01:15:30.846742	### Smooth ###
+INFO:root:2019-09-20 01:15:31.583242	### Quantise ###
+INFO:root:2019-09-20 01:21:18.500620	### Bit Synch ###
+INFO:root:2019-09-20 01:21:43.316560	### Opening file ###
+INFO:root:2019-09-20 01:21:43.316915	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:21:43.350674	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:21:44.475591	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:21:44.475949	### Remove DC ###
+INFO:root:2019-09-20 01:21:44.564429	### Applying filters ###
+INFO:root:2019-09-20 01:21:44.566875	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:21:44.569133	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:21:44.905016	### Calculate Mag ###
+INFO:root:2019-09-20 01:21:46.856969	### Smooth ###
+INFO:root:2019-09-20 01:21:46.912757	### Quantise ###
+INFO:root:2019-09-20 01:24:30.276541	### Opening file ###
+INFO:root:2019-09-20 01:24:30.276880	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:24:30.311852	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:24:31.443143	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:24:31.443619	### Remove DC ###
+INFO:root:2019-09-20 01:24:31.532154	### Applying filters ###
+INFO:root:2019-09-20 01:24:31.534580	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:24:31.536817	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:24:31.873214	### Calculate Mag ###
+INFO:root:2019-09-20 01:24:33.827053	### Smooth ###
+INFO:root:2019-09-20 01:24:33.935598	### Quantise ###
+INFO:root:2019-09-20 01:25:44.133956	### Bit Synch ###
+INFO:root:2019-09-20 01:26:08.189909	### Opening file ###
+INFO:root:2019-09-20 01:26:08.190372	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:26:08.223157	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:26:09.355923	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:26:09.356342	### Remove DC ###
+INFO:root:2019-09-20 01:26:09.469998	### Applying filters ###
+INFO:root:2019-09-20 01:26:09.472520	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:26:09.474843	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:26:09.811503	### Calculate Mag ###
+INFO:root:2019-09-20 01:26:11.864482	### Smooth ###
+INFO:root:2019-09-20 01:26:11.972913	### Quantise ###
+INFO:root:2019-09-20 01:26:22.340466	### Bit Synch ###
+INFO:root:2019-09-20 01:26:33.928615	### Opening file ###
+INFO:root:2019-09-20 01:26:33.928950	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:26:33.959637	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:26:35.088823	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:26:35.089179	### Remove DC ###
+INFO:root:2019-09-20 01:26:35.176336	### Applying filters ###
+INFO:root:2019-09-20 01:26:35.178753	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:26:35.181000	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:26:35.516638	### Calculate Mag ###
+INFO:root:2019-09-20 01:26:37.516437	### Smooth ###
+INFO:root:2019-09-20 01:26:37.624436	### Quantise ###
+INFO:root:2019-09-20 01:43:10.227515	### Opening file ###
+INFO:root:2019-09-20 01:43:10.227855	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:43:10.259281	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:43:11.392074	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:43:11.392428	### Remove DC ###
+INFO:root:2019-09-20 01:43:11.480527	### Applying filters ###
+INFO:root:2019-09-20 01:43:11.482966	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:43:11.485245	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:43:11.821178	### Calculate Mag ###
+INFO:root:2019-09-20 01:43:13.782681	### Smooth ###
+INFO:root:2019-09-20 01:44:16.128192	### Quantise ###
+INFO:root:2019-09-20 01:44:58.463401	### Opening file ###
+INFO:root:2019-09-20 01:44:58.463755	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:44:58.497803	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:44:59.630577	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:44:59.630929	### Remove DC ###
+INFO:root:2019-09-20 01:44:59.721003	### Applying filters ###
+INFO:root:2019-09-20 01:44:59.723460	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:44:59.725671	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:45:00.062145	### Calculate Mag ###
+INFO:root:2019-09-20 01:50:18.670126	### Opening file ###
+INFO:root:2019-09-20 01:50:18.671040	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:50:18.864451	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:50:20.011700	Wavfile resampled. Len:2992912, Fs:12000Hz
+INFO:root:2019-09-20 01:50:20.012086	### Remove DC ###
+INFO:root:2019-09-20 01:50:20.102880	### Applying filters ###
+INFO:root:2019-09-20 01:50:20.105375	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:50:20.107537	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:50:20.798646	### Calculate Mag ###
+INFO:root:2019-09-20 01:51:59.864157	### Opening file ###
+INFO:root:2019-09-20 01:51:59.864499	Opening: UOSAT2.wav
+INFO:root:2019-09-20 01:52:00.075678	Wavfile loaded. Len:11971648, Fs:48000Hz
+INFO:root:2019-09-20 01:52:00.076166	### Remove DC ###
+INFO:root:2019-09-20 01:52:00.231473	### Applying filters ###
+INFO:root:2019-09-20 01:52:00.234001	Filter of order 15 deisgned (high)
+INFO:root:2019-09-20 01:52:00.236272	Filter of order 15 deisgned (low)
+INFO:root:2019-09-20 01:52:03.351502	### Calculate Mag ###
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
