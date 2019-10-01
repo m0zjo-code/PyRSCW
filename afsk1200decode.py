@@ -55,11 +55,15 @@ def main(argv):
     # TODO this should be a windowed method to run over the file
     log("### Remove DC ###")
     wav_file = afsk1200lib.remove_dc(wav_file)
+    
+    bitstream = afsk1200lib.fsk_demodulate(wav_file.data, 1200, 1800, wav_file.rate, 1200)
 
-
+    ascii_out = afsk1200lib.decode_block(bitstream)
+    
+    print(ascii_out)
     # Designs a FIR filter to remove non-CW components
-    log("### Applying filters ###")
-    filtered_data = afsk1200lib.generate_filtered_baseband(wav_file)
+    #log("### Applying filters ###")
+    #filtered_data = afsk1200lib.generate_filtered_baseband(wav_file)
     
     #afsk1200lib.plot_numpy_data([filtered_data[0], filtered_data[1]])
 
@@ -68,34 +72,25 @@ def main(argv):
     #downsampled_power_data = afsk1200lib.downsample_abs_bb(baseband_data, wav_file.rate)
 
     # Calculate the magnitude vector of the IQ
-    log("### Calculate Mag ###")
-    magnitude_data_low = afsk1200lib.compute_abs(filtered_data[0])
-    magnitude_data_high = afsk1200lib.compute_abs(filtered_data[1])
+    #log("### Calculate Mag ###")
+    #magnitude_data_low = afsk1200lib.compute_abs(filtered_data[0])
+    #magnitude_data_high = afsk1200lib.compute_abs(filtered_data[1])
     
-    #afsk1200lib.plot_numpy_data([magnitude_data_low, magnitude_data_high])
-
-    # Smooth the magnitude vector (convolutional method)
-    log("### Smooth ###")
-    magnitude_data_smoothed_low = afsk1200lib.smooth_mag(magnitude_data_low)
-    magnitude_data_smoothed_high = afsk1200lib.smooth_mag(magnitude_data_high)
+    #log("### Filter Discriminator Output ###")
+    #filt_d = afsk1200lib.filter_discriminator(magnitude_data_low, magnitude_data_high, fs = wav_file.rate)
     
-    afsk1200lib.plot_numpy_data([magnitude_data_smoothed_low, magnitude_data_smoothed_high])
-
-    # Convert +n and -n to 1 and -1
-    log("### Quantise ###")
-    bitstream = afsk1200lib.quantise(magnitude_data_smoothed_low, magnitude_data_smoothed_high)
+    #log("### Threshold Bits ###")
+    #bits_os = afsk1200lib.quantise(filt_d)
     
-    afsk1200lib.plot_numpy_data([bitstream[1000000:1200000]])
-
-    # From the signal detection vector - determine where the bt starts (to the nearest sample)
-    log("### Bit Synch ###")
-    signal_synch_list = afsk1200lib.bit_synch(bitstream, signal_present, min_length = min_signal_len)
-
-    # Decode the synced bitstream
-    log("### Decode ###")
-    for i in range(0, len(signal_synch_list)):
-        decoder_output = afsk1200lib.decode_block(bitstream[signal_synch_list[i][0]: signal_synch_list[i][1]], afsk1200lib.generate_alphabet(), wpm)
-        afsk1200lib.output_data(decoder_output, work_id)
+    ##afsk1200lib.plot_numpy_data([bits_os])
+    
+    #idx, ctr = afsk1200lib.PLL(bits_os)
+    
+    #bits = bits_os[idx]
+    
+    #afsk1200lib.plot_numpy_data([magnitude_data_low[0:4800], magnitude_data_high[0:4800]])
+    
+    #extractdata_block = afsk1200lib.decode_block(bits[1000:len(bits)])
 
 if __name__ == "__main__":
    main(sys.argv[1:])
