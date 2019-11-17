@@ -40,10 +40,7 @@ def main(argv):
     from afsk1200lib import log
 
     # Set up variables
-    min_signal_len = 2000 #In ms
-    threshold_value = 0.1 #Normalised to varience of signal
     internal_resample_val = None #Internal fs for initial DSP (Reduce for speed)
-    detection_threshold = 0.1 #Value to determine if a signal is present
 
     afsk1200lib.print_header()
 
@@ -52,45 +49,20 @@ def main(argv):
     wav_file = afsk1200lib.open_wav_file(inputfile, resample = internal_resample_val)
 
     # Remove any DC present in the array.
-    # TODO this should be a windowed method to run over the file
     log("### Remove DC ###")
     wav_file = afsk1200lib.remove_dc(wav_file)
     
+    log("### Bandpass Filter ###")
+    wav_file = afsk1200lib.filter_wav(wav_file)
+    
+    log("### Demodulate FSK ###")
     bitstream = afsk1200lib.fsk_demodulate(wav_file.data, 1200, 1800, wav_file.rate, 1200)
-
+    
+    log("### Decode UOSAT-2 Data ###")
     ascii_out = afsk1200lib.decode_block(bitstream)
     
-    print(ascii_out)
-    # Designs a FIR filter to remove non-CW components
-    #log("### Applying filters ###")
-    #filtered_data = afsk1200lib.generate_filtered_baseband(wav_file)
-    
-    #afsk1200lib.plot_numpy_data([filtered_data[0], filtered_data[1]])
-
-    ## Dowsample full rate file to 1000Hz
-    #log("### Downsampling ###")
-    #downsampled_power_data = afsk1200lib.downsample_abs_bb(baseband_data, wav_file.rate)
-
-    # Calculate the magnitude vector of the IQ
-    #log("### Calculate Mag ###")
-    #magnitude_data_low = afsk1200lib.compute_abs(filtered_data[0])
-    #magnitude_data_high = afsk1200lib.compute_abs(filtered_data[1])
-    
-    #log("### Filter Discriminator Output ###")
-    #filt_d = afsk1200lib.filter_discriminator(magnitude_data_low, magnitude_data_high, fs = wav_file.rate)
-    
-    #log("### Threshold Bits ###")
-    #bits_os = afsk1200lib.quantise(filt_d)
-    
-    ##afsk1200lib.plot_numpy_data([bits_os])
-    
-    #idx, ctr = afsk1200lib.PLL(bits_os)
-    
-    #bits = bits_os[idx]
-    
-    #afsk1200lib.plot_numpy_data([magnitude_data_low[0:4800], magnitude_data_high[0:4800]])
-    
-    #extractdata_block = afsk1200lib.decode_block(bits[1000:len(bits)])
+    log("### Output UOSAT-2 Data to File ###")
+    afsk1200lib.output_data(ascii_out, work_id)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

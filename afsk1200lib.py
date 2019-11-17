@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#File        pyrscwlib.py
+#File        afsk1200lib.py
 #Author      Jonathan Rawlinson/M0ZJO
-#Date        13/01/2019
-#Desc.       This is the main software library for the CW decoding software "Pyrscw".
-#            The original inspiration for this software was rscw.c (http://wwwhome.cs.utwente.nl/~ptdeboer/ham/rscw/) 
-#            written by PA3FWM but the implemntation differs in a number of ways. This software was written to 
-#            process audio recordings of the XW2 satellites but will work with any machine generated CW.
-
+#Date        05/10/2019
+#Desc.       This is a physical layer decoder for UOSAT-2 AFSK
 
 __author__ = "Jonathan/M0ZJO"
 __copyright__ = "Jonathan/M0ZJO 2019"
 __credits__ = ["Surrey University"]
 __license__ = "MIT"
 __version__ = "0.0.1"
-__date__ = "01/10/2019"
+__date__ = "04/10/2019"
 __maintainer__ = "Jonathan/M0ZJO"
 __status__ = "Development"
 
@@ -24,12 +20,15 @@ import matplotlib.pyplot as plt
 import wavio
 import datetime
 import logging
+import time
 
 
 logging.basicConfig(filename='PyAFSK1200.log', level=logging.INFO)
 
 # Print info about the software
 def print_header():
+    # Generated:
+    # http://patorjk.com/software/taag/#p=display&f=Big&t=PyAFSK1200
     name = """
   _____                ______ _____ _  ____ ___   ___   ___  
  |  __ \         /\   |  ____/ ____| |/ /_ |__ \ / _ \ / _ \ 
@@ -60,6 +59,7 @@ def open_wav_file(filename, resample = None):
         wav_data.data = wav_data.data[:,0]
     return wav_data
 
+# Decimate
 def resample_wav(wav, in_fs, out_fs):
     N = in_fs/out_fs
     if int(N) == N:
@@ -73,52 +73,37 @@ def resample_wav(wav, in_fs, out_fs):
         # Non Integer Rate
         log("Non-integer downsampling rates not supported")
         return wav, in_fs
-        
-
-# Plot section of file (for debugging purposes)
-def plot_file(wav_data):
-    plt.plot(wav_data.data[0:1000])
-    plt.show()
-    return
 
 # Simple DC removal algorithem
 def remove_dc(wav_data):
     wav_data.data = wav_data.data - np.mean(wav_data.data)
     return wav_data
 
-def butter_bandpass(lowcut, highcut, fs, order=4):
+def butter_bandpass(lowcut, highcut, fs, order):
     nyq = 0.5 * fs
     low = lowcut / nyq
     high = highcut / nyq
     b, a = signal.butter(order, [low, high], btype='band')
     return b, a
 
-#def iir_bandpass(lowcut, highcut, fs, order=50):
-    #offset = 100
-    #nyq = 0.5 * fs
-    #low = lowcut / nyq
-    #high = highcut / nyq
-    #b, a = signal.iirdesign([low, high],[low-offset, high+offset], 1, 40)
-    #return b, a
-
-
-def design_bp(fs, mode, plot = False):
+def design_bp(fs, mode = 2, plot = False):
     nyq_rate = fs/2
     
     cf = 1800
-    offset = 900
+    offset = 1000
+    order = 50
     
     if mode == 1:
         # Help from -->> https://scipy-cookbook.readthedocs.io/items/FIRFilter.html
 
-        b, a = butter_bandpass(cf-offset, cf+offset, fs)
+        b, a = butter_bandpass(cf-offset, cf+offset, fs, order)
         
         log("Filter of order %i deisgned (high)" % len(b))
     
     if mode == 2:
         f1 = (cf-offset)/nyq_rate
         f2 = (cf+offset)/nyq_rate
-        b = signal.firwin(200, [f1, f2], pass_zero=False)
+        b = signal.firwin(order, [f1, f2], pass_zero=False)
         a = 1.0
     
     if plot:
@@ -133,14 +118,15 @@ def design_bp(fs, mode, plot = False):
         
     return b, a
 
-def design_lp(fs, mode, plot = False):
+def design_lp(fs, mode = 2, plot = False):
     nyq_rate = fs/2
     
-    cf = 1200*1.2
+    cf = 2500
+    order = 500 
     
-    if mode == 2:
-        b = signal.firwin(200, cf/nyq_rate)
-        a = 1.0
+    cf_d = cf/nyq_rate
+    b = signal.firwin(order, cf_d)
+    a = 1.0
     
     if plot:
         w, h = signal.freqz(b, a, worN=48000)
@@ -154,33 +140,14 @@ def design_lp(fs, mode, plot = False):
         
     return b, a
 
-
-# Downsample signal and apply LPF
-def generate_filtered_baseband(wav_data):
-   
-    # FIR (mode = 2) or IIR (mode = 1) Design
-    taps_high_b, taps_high_a = design_high_notch(wav_data.rate, 2, plot = False)
-    taps_low_b, taps_low_a = design_low_notch(wav_data.rate, 2, plot = False )
-    taps_bandpass_wb_b, taps_bandpass_wb_a = design_bp(wav_data.rate, 2, plot = False)
+def filter_wav(wav_file, fs = 48000):
+    b, a = design_bp(fs, 2, plot = False)
     
-    filtered_wav = signal.lfilter(taps_bandpass_wb_b, taps_bandpass_wb_a, wav_data.data)
-    filtered_high = signal.lfilter(taps_high_b, taps_high_a, filtered_wav)
-    filtered_low = signal.lfilter(taps_low_b, taps_low_a, filtered_wav)
+    wav_file.data = signal.lfilter(b, a, wav_file.data)
     
-    return [filtered_low, filtered_high]
-
-def filter_discriminator(low, high, fs = 48000):
-    b, a = design_lp(fs, 2, plot = False)
+    return wav_file
     
-    filt_d = signal.lfilter(b, a, high-low)
-
-    
-    return filt_d
-    
-    
-
 def fsk_demodulate(y, f_sep, cf, fs, baud):
-    import time
     block_len = int(fs/baud)
     
     t = np.arange(0, block_len)/fs
@@ -240,8 +207,10 @@ def PLL(NRZa, a = 0.74 , fs = 48000, baud = 1200):
         #print(ctr, ctr_max-ctr)
     return idx, ctr_list/np.max(ctr_list)
 
+# Decode bitstream (find ascii chars)
 def decode_block(bits):
     i = 0
+    
     output_str = ""
     while True:
         if i > len(bits) - 12:
@@ -253,21 +222,30 @@ def decode_block(bits):
             data_str = ""
             for k in range(0, 7):
                 data_str = data_str + str(data[6-k])
-            test_parity = bits[9]
-            #print(test_parity, getParity(int(data_str, 2)))
-            i = i + 11 
-            output_str = output_str + return_char(data_str)
+            test_parity = bits[i+9]
+            #print(return_char(data_str), test_parity, parity_brute_force(int(data_str, 2)))
+            if test_parity == parity_brute_force(int(data_str, 2)):
+                output_str = output_str + return_char(data_str)
+                i = i + 11 
+            else:
+                i = i + 1
         else:
             i = i + 1
     return output_str
-# https://www.geeksforgeeks.org/program-to-find-parity/
-def getParity( n ): 
-    parity = 0
-    while n: 
-        parity = ~parity 
-        n = n & (n - 1) 
-    return -parity 
 
+# Calculate Even Parity
+def parity_brute_force(x):
+    bit = 0
+    num_bits = 0
+    while x:
+        bitmask = 1 << bit
+        bit += 1
+        if x & bitmask:
+            num_bits += 1
+        x &= ~bitmask
+    return num_bits % 2
+
+# Get Ascii Char
 def return_char(bits):
     inv_map = {v: k for k, v in generate_alphabet().items()}
     try:
@@ -275,14 +253,14 @@ def return_char(bits):
     except:
         return "."
 
-def numpy_array_to_str(bits):
-    out = ""
-    for i in bits:
-        if i == 1:
-            out = out + "0"
-        else:
-            out = out + "1"
-    return out
+#def numpy_array_to_str(bits):
+    #out = ""
+    #for i in bits:
+        #if i == 1:
+            #out = out + "0"
+        #else:
+            #out = out + "1"
+    #return out
     
 def generate_alphabet():
     
@@ -338,20 +316,23 @@ def generate_alphabet():
 
 # Plot a series of numpy arrays (debugging...)
 def plot_numpy_data(mag):
-    
     for i in mag:
         plt.plot(i)
     plt.show()
     return
 
+# Logging function
 def log(string):
     print(datetime.datetime.now(), string)
     log_str = str(datetime.datetime.now()) + "\t" + string
     logging.info(log_str)
-    
+
+# Save output data
 def output_data(string, work_id):
+    fname = "pyafsk1200_%s_%i.txt" % (work_id, int(time.time()))
+    log("### Data written to: %s" % fname)
     print(string)
-    with open("pyrscw_%s.txt" % work_id, "a+") as f:
+    with open(fname, "a+") as f:
         f.write(string + "\r\n")
     f.close()
     
@@ -360,4 +341,4 @@ def output_data(string, work_id):
 if __name__ == "__main__":
     # execute only if run as a script
     print_header()
-    print("This is the library file - please run the main script 'pyrscw.py'")
+    print("This is the library file!")
