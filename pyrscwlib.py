@@ -366,6 +366,7 @@ def generate_alphabet():
     alphabet["7"] = "1110111010101000"
     alphabet["8"] = "111011101110101000"
     alphabet["9"] = "11101110111011101000"
+    alphabet["-"] = "111010101010111000"
     
     return alphabet
         

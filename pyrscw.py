@@ -51,9 +51,9 @@ def main(argv):
 
     # Set up variables
     min_signal_len = 2000 #In ms
-    threshold_value = 0.1 #Normalised to varience of signal
+    threshold_value = 0.05 #Normalised to varience of signal
     internal_resample_val = 8000 #Internal fs for initial DSP (Reduce for speed)
-    detection_threshold = 0.1 #Value to determine if a signal is present
+    detection_threshold = 0.03 #Value to determine if a signal is present
 
     pyrscwlib.print_header()
 
@@ -102,9 +102,9 @@ def main(argv):
 
     # Detect if a CW signal is present (or any signal for that matter) by looking at the standard deviation
     log("### Detect Signal ###")
-    signal_present = pyrscwlib.signal_detect(magnitude_data, detection_threshold = detection_threshold)
+    signal_present = pyrscwlib.signal_detect(magnitude_data_smoothed, detection_threshold = detection_threshold)
 
-    #pyrscwlib.plot_numpy_data([magnitude_data, magnitude_data_smoothed, shifted_mag, signal_present])
+    pyrscwlib.plot_numpy_data([magnitude_data, magnitude_data_smoothed, shifted_mag, signal_present])
 
     # Convert +n and -n to 1 and -1
     log("### Quantise ###")
